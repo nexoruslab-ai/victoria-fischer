@@ -299,6 +299,8 @@
     margin-top: 3px;
   }
   .pack-features li.highlight { color: var(--gold-pale); font-weight: 600; }
+
+  /* ── CTA BUTTONS with GLOW effect ── */
   .pack-cta {
     display: block;
     width: 100%;
@@ -310,24 +312,205 @@
     text-transform: uppercase;
     border-radius: 2px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     text-decoration: none;
     border: none;
+    position: relative;
+    overflow: hidden;
   }
+  .pack-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0);
+    transition: background 0.3s ease;
+  }
+  .pack-cta:hover::after {
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* Outline variant */
   .pack-cta-outline {
     background: transparent;
     border: 1px solid rgba(201,150,58,0.5);
     color: var(--gold);
   }
   .pack-cta-outline:hover {
-    background: rgba(201,150,58,0.1);
-    border-color: var(--gold);
+    background: rgba(201,150,58,0.12);
+    border-color: var(--gold-light);
+    color: var(--gold-light);
+    box-shadow:
+      0 0 12px rgba(201,150,58,0.35),
+      0 0 30px rgba(201,150,58,0.15),
+      inset 0 0 20px rgba(201,150,58,0.05);
+    transform: translateY(-2px);
+    text-shadow: 0 0 12px rgba(201,150,58,0.6);
   }
-  .pack-cta-fill { background: var(--gold); color: var(--dark); }
+
+  /* Fill variant (featured pack) */
+  .pack-cta-fill {
+    background: var(--gold);
+    color: var(--dark);
+  }
   .pack-cta-fill:hover {
     background: var(--gold-light);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201,150,58,0.4);
+    box-shadow:
+      0 8px 24px rgba(201,150,58,0.5),
+      0 0 40px rgba(232,184,75,0.3),
+      0 0 80px rgba(201,150,58,0.15);
+    filter: brightness(1.1);
+  }
+
+  /* Elite outline variant */
+  .pack-cta-elite {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+  }
+  .pack-cta-elite:hover {
+    background: rgba(201,150,58,0.15);
+    border-color: var(--gold-light);
+    color: var(--gold-light);
+    box-shadow:
+      0 0 16px rgba(201,150,58,0.45),
+      0 0 40px rgba(201,150,58,0.2),
+      inset 0 0 24px rgba(201,150,58,0.07);
+    transform: translateY(-2px);
+    text-shadow: 0 0 14px rgba(201,150,58,0.7);
+  }
+
+  /* ── TESTIMONIALS CAROUSEL ── */
+  .testimonials-section {
+    padding: 80px 0;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(180deg, var(--dark2) 0%, #1a0f18 40%, #200d1c 70%, var(--dark2) 100%);
+  }
+  .testimonials-header {
+    text-align: center;
+    padding: 0 40px;
+    margin-bottom: 56px;
+  }
+  .testimonials-track-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  /* Fade edges */
+  .testimonials-track-wrapper::before,
+  .testimonials-track-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 180px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .testimonials-track-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, var(--dark2), transparent);
+  }
+  .testimonials-track-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, var(--dark2), transparent);
+  }
+  .testimonials-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: scrollLeft 40s linear infinite;
+    padding: 16px 0 24px;
+  }
+  .testimonials-track:hover {
+    animation-play-state: paused;
+  }
+  @keyframes scrollLeft {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .testimonial-card {
+    background: rgba(44,26,36,0.75);
+    border: 1px solid rgba(201,150,58,0.18);
+    border-radius: 6px;
+    padding: 32px 28px;
+    width: 340px;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    backdrop-filter: blur(8px);
+  }
+  .testimonial-card:hover {
+    border-color: rgba(201,150,58,0.45);
+    box-shadow: 0 8px 40px rgba(107,45,94,0.35), 0 0 20px rgba(201,150,58,0.08);
+    transform: translateY(-4px);
+  }
+  .testimonial-stars {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .testimonial-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+  .testimonial-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,150,58,0.3), transparent);
+    margin-bottom: 20px;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .testimonial-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--berry), var(--rose));
+    border: 2px solid rgba(201,150,58,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold-pale);
+    flex-shrink: 0;
+  }
+  .testimonial-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold-pale);
+    margin-bottom: 3px;
+    letter-spacing: 0.5px;
+  }
+  .testimonial-role {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .testimonial-pack-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(201,150,58,0.12);
+    border: 1px solid rgba(201,150,58,0.25);
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
   }
 
   /* ── MENTORING ── */
@@ -468,6 +651,8 @@
     .playbook-section { padding: 40px 28px; margin: 0 20px 60px; }
     .playbook-stats { gap: 32px; }
     .section { padding: 60px 24px; }
+    .testimonials-track-wrapper::before,
+    .testimonials-track-wrapper::after { width: 60px; }
   }
 </style>
 </head>
@@ -543,7 +728,7 @@
         <li>Manual de respuestas validadas a objeciones (cualquier nicho)</li>
         <li>Acceso inmediato y permanente</li>
       </ul>
-      <a href="#" class="pack-cta pack-cta-outline">Quiero este pack</a>
+      <a href="https://buy.stripe.com/aFa3cu2Oqfiid2R5NeeAg0e" target="_blank" rel="noopener" class="pack-cta pack-cta-outline">Quiero este pack</a>
     </div>
 
     <!-- PACK 2 -->
@@ -563,7 +748,7 @@
         <li>Foco a tu elección: mentalidad, ventas o combinada</li>
         <li>Aplicada a tu modelo de negocio exacto</li>
       </ul>
-      <a href="#" class="pack-cta pack-cta-outline">Quiero este pack</a>
+      <a href="https://buy.stripe.com/aFaaEWdt42vw7Ix3F6eAg0f" target="_blank" rel="noopener" class="pack-cta pack-cta-outline">Quiero este pack</a>
     </div>
 
     <!-- PACK 3 — FEATURED -->
@@ -585,7 +770,7 @@
         <li>Mentalidad + ventas aplicadas a tu negocio</li>
         <li>Seguimiento entre sesiones vía mensajes</li>
       </ul>
-      <a href="#" class="pack-cta pack-cta-fill">Quiero este pack</a>
+      <a href="https://buy.stripe.com/5kQ6oGdt45HI2odfnOeAg0g" target="_blank" rel="noopener" class="pack-cta pack-cta-fill">Quiero este pack</a>
     </div>
 
     <!-- PACK 4 -->
@@ -606,11 +791,257 @@
         <li class="highlight">Playbook personalizado: +50 respuestas a objeciones de tu nicho</li>
         <li>Creado por Victoria Fischer para tu modelo de negocio</li>
       </ul>
-      <a href="#" class="pack-cta pack-cta-outline" style="border-color: var(--gold); color: var(--gold);">Quiero este pack</a>
+      <a href="https://buy.stripe.com/28E3cu60C2vwgf31wYeAg0h" target="_blank" rel="noopener" class="pack-cta pack-cta-elite">Quiero este pack</a>
     </div>
 
   </div>
 </div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-header fade-in">
+    <div class="section-label" style="text-align:center; margin-bottom:10px;">Lo que dicen ellas</div>
+    <h2 class="section-title" style="text-align:center;">Resultados reales.<br>Palabras reales.</h2>
+  </div>
+  <div class="testimonials-track-wrapper">
+    <div class="testimonials-track" id="testimonialsTrack">
+
+      <!-- Card 1 -->
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack Elite</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Antes de trabajar con Victoria cerraba 1 de cada 10 llamadas. Hoy cierro 7. No es magia, es método. El playbook personalizado fue un antes y un después para mi negocio."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">L</div>
+          <div>
+            <div class="testimonial-name">Luciana M.</div>
+            <div class="testimonial-role">Coach de Nutrición · Buenos Aires</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack 03</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"La primera sesión me cambió la cabeza. Yo pensaba que el problema era el precio de mi servicio. Victoria me mostró que el problema era yo. Vendedora completamente diferente ahora."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div>
+            <div class="testimonial-name">Sofía R.</div>
+            <div class="testimonial-role">Diseñadora Freelance · Rosario</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack 01</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Empecé con el Pack Fundamentos porque era lo que podía invertir. Solo con el material, sin mentorías, dupliqué mi tasa de cierre en 3 semanas. El método socrático es una locura."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">V</div>
+          <div>
+            <div class="testimonial-name">Valentina C.</div>
+            <div class="testimonial-role">Asesora Inmobiliaria · Córdoba</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack Elite</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Victoria analizó mi llamada y en 20 minutos identificó 6 errores que yo cometía en cada cierre. Errores que llevaba 2 años cometiendo sin darme cuenta. Fue brutal y necesario."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Marcela F.</div>
+            <div class="testimonial-role">Mentora de Negocios · CABA</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack 02</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Con una sola mentoría ya recuperé la inversión. Victoria me dio un script adaptado a mi nicho y en la siguiente llamada cerré una venta de $1200 USD. Literalmente no lo podía creer."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">C</div>
+          <div>
+            <div class="testimonial-name">Carolina A.</div>
+            <div class="testimonial-role">Consultora de Marketing · Mendoza</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack 03</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Me bloqueaba cuando el cliente decía 'lo pienso y te aviso'. Después de las sesiones con Victoria tengo 4 respuestas diferentes para ese momento. Mis cierres subieron un 60%."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div>
+            <div class="testimonial-name">Agostina P.</div>
+            <div class="testimonial-role">Profesora de Yoga · Tucumán</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack Elite</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"El Playbook personalizado parece que lo escribió alguien que estuvo en cada una de mis llamadas. Cada objeción de mi nicho está respondida de tres formas distintas. Es un activo de por vida."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          <div>
+            <div class="testimonial-name">Romina G.</div>
+            <div class="testimonial-role">Terapeuta Holística · Santa Fe</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack 01</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Nunca pensé que $27 podían cambiarme la cabeza para vender. Leer sobre los 5 mindsets fue como encender una luz en un cuarto oscuro. Entendí por qué me saboteaba sola."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">N</div>
+          <div>
+            <div class="testimonial-name">Natalia B.</div>
+            <div class="testimonial-role">Fotógrafa Profesional · La Plata</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DUPLICATED SET for infinite loop -->
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack Elite</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Antes de trabajar con Victoria cerraba 1 de cada 10 llamadas. Hoy cierro 7. No es magia, es método. El playbook personalizado fue un antes y un después para mi negocio."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">L</div>
+          <div>
+            <div class="testimonial-name">Luciana M.</div>
+            <div class="testimonial-role">Coach de Nutrición · Buenos Aires</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack 03</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"La primera sesión me cambió la cabeza. Yo pensaba que el problema era el precio de mi servicio. Victoria me mostró que el problema era yo. Vendedora completamente diferente ahora."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div>
+            <div class="testimonial-name">Sofía R.</div>
+            <div class="testimonial-role">Diseñadora Freelance · Rosario</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack 01</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Empecé con el Pack Fundamentos porque era lo que podía invertir. Solo con el material, sin mentorías, dupliqué mi tasa de cierre en 3 semanas. El método socrático es una locura."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">V</div>
+          <div>
+            <div class="testimonial-name">Valentina C.</div>
+            <div class="testimonial-role">Asesora Inmobiliaria · Córdoba</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack Elite</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Victoria analizó mi llamada y en 20 minutos identificó 6 errores que yo cometía en cada cierre. Errores que llevaba 2 años cometiendo sin darme cuenta. Fue brutal y necesario."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Marcela F.</div>
+            <div class="testimonial-role">Mentora de Negocios · CABA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack 02</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Con una sola mentoría ya recuperé la inversión. Victoria me dio un script adaptado a mi nicho y en la siguiente llamada cerré una venta de $1200 USD. Literalmente no lo podía creer."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">C</div>
+          <div>
+            <div class="testimonial-name">Carolina A.</div>
+            <div class="testimonial-role">Consultora de Marketing · Mendoza</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack 03</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Me bloqueaba cuando el cliente decía 'lo pienso y te aviso'. Después de las sesiones con Victoria tengo 4 respuestas diferentes para ese momento. Mis cierres subieron un 60%."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div>
+            <div class="testimonial-name">Agostina P.</div>
+            <div class="testimonial-role">Profesora de Yoga · Tucumán</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack Elite</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"El Playbook personalizado parece que lo escribió alguien que estuvo en cada una de mis llamadas. Cada objeción de mi nicho está respondida de tres formas distintas. Es un activo de por vida."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          <div>
+            <div class="testimonial-name">Romina G.</div>
+            <div class="testimonial-role">Terapeuta Holística · Santa Fe</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <span class="testimonial-pack-tag">Pack 01</span>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Nunca pensé que $27 podían cambiarme la cabeza para vender. Leer sobre los 5 mindsets fue como encender una luz en un cuarto oscuro. Entendí por qué me saboteaba sola."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">N</div>
+          <div>
+            <div class="testimonial-name">Natalia B.</div>
+            <div class="testimonial-role">Fotógrafa Profesional · La Plata</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- MENTORING DETAILS -->
 <section class="mentoring-section">
@@ -672,6 +1103,7 @@
 </footer>
 
 <script>
+  // Fade-in observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -680,6 +1112,19 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Pause carousel on hover (handled via CSS), but also ensure smooth loop
+  // by dynamically adjusting animation duration based on track width
+  const track = document.getElementById('testimonialsTrack');
+  function calibrateCarousel() {
+    const totalWidth = track.scrollWidth;
+    const halfWidth = totalWidth / 2;
+    const speed = 60; // px per second
+    const duration = halfWidth / speed;
+    track.style.animationDuration = duration + 's';
+  }
+  calibrateCarousel();
+  window.addEventListener('resize', calibrateCarousel);
 </script>
 </body>
 </html>
