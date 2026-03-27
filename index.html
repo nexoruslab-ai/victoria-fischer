@@ -86,6 +86,99 @@
     text-align: left; opacity: 0; animation: fadeUp 0.8s 1s forwards;
   }
 
+  /* ── PHOTO CAROUSEL ── */
+  .photo-wall {
+    width: 100%;
+    background: #050008;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(201,150,58,0.12);
+    border-bottom: 1px solid rgba(201,150,58,0.12);
+  }
+  .photo-wall-inner { position: relative; }
+  .photo-track {
+    display: flex;
+    transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+  .photo-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 78vh;
+    min-height: 500px;
+    max-height: 760px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+  .photo-slide-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center 20%;
+    transition: transform 7s ease;
+    transform: scale(1.06);
+  }
+  .photo-slide.ps-active .photo-slide-img { transform: scale(1.0); }
+  .photo-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(5,0,8,0.25) 0%,
+      transparent 25%,
+      transparent 70%,
+      rgba(5,0,8,0.55) 100%
+    );
+    pointer-events: none;
+  }
+  .photo-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0,0,0,0.25);
+    border: 1.5px solid rgba(201,150,58,0.45);
+    color: var(--gold);
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.25s;
+    backdrop-filter: blur(6px);
+    line-height: 1;
+  }
+  .photo-nav:hover {
+    background: rgba(201,150,58,0.22);
+    border-color: var(--gold);
+    transform: translateY(-50%) scale(1.08);
+  }
+  .photo-nav-prev { left: 28px; }
+  .photo-nav-next { right: 28px; }
+  .photo-dots {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 10px; z-index: 10;
+  }
+  .photo-dot {
+    height: 3px; width: 28px;
+    background: rgba(201,150,58,0.3);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.35s;
+  }
+  .photo-dot.pd-active { background: var(--gold); width: 50px; }
+  @media (max-width: 600px) {
+    .photo-slide { height: 60vh; min-height: 340px; }
+    .photo-nav { width: 42px; height: 42px; font-size: 18px; }
+    .photo-nav-prev { left: 12px; }
+    .photo-nav-next { right: 12px; }
+  }
+
   /* ── TESTIMONIALS CAROUSEL (full-bleed, 2 rows) ── */
   .testimonials-wall {
     width: 100%;
@@ -546,6 +639,39 @@
   </blockquote>
 </section>
 
+<!-- PHOTO CAROUSEL -->
+<div class="photo-wall">
+  <div class="photo-wall-inner">
+    <div class="photo-track" id="photoTrack">
+
+      <div class="photo-slide ps-active">
+        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-studio.jpg'); background-position: center 15%;"></div>
+      </div>
+
+      <div class="photo-slide">
+        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-gala.jpg'); background-position: center 10%;"></div>
+      </div>
+
+      <div class="photo-slide">
+        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-stage.jpg'); background-position: center 18%;"></div>
+      </div>
+
+      <div class="photo-slide">
+        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-magazine.jpg'); background-position: center 8%;"></div>
+      </div>
+
+    </div>
+    <button class="photo-nav photo-nav-prev" id="photoPrev" aria-label="Anterior">&#8249;</button>
+    <button class="photo-nav photo-nav-next" id="photoNext" aria-label="Siguiente">&#8250;</button>
+    <div class="photo-dots" id="photoDots">
+      <div class="photo-dot pd-active" data-i="0"></div>
+      <div class="photo-dot" data-i="1"></div>
+      <div class="photo-dot" data-i="2"></div>
+      <div class="photo-dot" data-i="3"></div>
+    </div>
+  </div>
+</div>
+
 <!-- TESTIMONIALS WALL — full bleed, 2 rows opposite directions -->
 <div class="testimonials-wall">
   <div class="testimonials-wall-label">Resultados reales · Palabras reales</div>
@@ -803,7 +929,7 @@
         <div class="tc-line"></div>
         <div class="tc-author">
           <div class="tc-avatar">B</div>
-          <div><div class="tc-name">Belén R.</div><div class="tc-role">Nutricionista · Mendoza</div></div>
+          <div><div class="tc-name">Relén R.</div><div class="tc-role">Nutricionista · Mendoza</div></div>
         </div>
       </div>
 
@@ -1047,7 +1173,7 @@
         <span class="pack-amount">97</span>
         <span class="pack-period">único pago</span>
       </div>
-      <div class="pack-divider"></div>
+      <div clas="pack-divider"></div>
       <ul class="pack-features">
         <li>Todo lo del Pack 03</li>
         <li class="highlight">4 mentorías 1 a 1 con Victoria</li>
@@ -1067,7 +1193,7 @@
   <h2 class="section-title fade-in">Cada sesión es tuya.<br>Aplicada a tu realidad.</h2>
   <div class="mentoring-grid fade-in">
     <div class="mentoring-item">
-      <div class="mentoring-item-icon">🧠</div>
+      <div class="mentoring-item-icon">🧠 </div>
       <div class="mentoring-item-title">Solo Mentalidad</div>
       <div class="mentoring-item-desc">Trabajamos los bloqueos que te impiden cerrar. Miedos, creencias limitantes, relación con el dinero, identidad de cierre. El trabajo interno que nadie ve pero que lo determina todo.</div>
     </div>
@@ -1130,6 +1256,43 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Photo carousel
+  (function(){
+    const track = document.getElementById('photoTrack');
+    if (!track) return;
+    const slides = track.querySelectorAll('.photo-slide');
+    const dots   = document.querySelectorAll('.photo-dot');
+    let cur = 0, timer;
+
+    function goTo(n) {
+      slides[cur].classList.remove('ps-active');
+      dots[cur].classList.remove('pd-active');
+      cur = ((n % slides.length) + slides.length) % slides.length;
+      slides[cur].classList.add('ps-active');
+      dots[cur].classList.add('pd-active');
+      track.style.transform = 'translateX(-' + cur * 100 + '%)';
+    }
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(function(){ goTo(cur + 1); }, 5200);
+    }
+    document.getElementById('photoNext').addEventListener('click', function(){ goTo(cur + 1); startTimer(); });
+    document.getElementById('photoPrev').addEventListener('click', function(){ goTo(cur - 1); startTimer(); });
+    dots.forEach(function(d){ d.addEventListener('click', function(){ goTo(+d.dataset.i); startTimer(); }); });
+    track.parentElement.addEventListener('mouseenter', function(){ clearInterval(timer); });
+    track.parentElement.addEventListener('mouseleave', startTimer);
+
+    // Touch swipe support
+    var tx = 0;
+    track.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend',   function(e){
+      var dx = e.changedTouches[0].clientX - tx;
+      if (Math.abs(dx) > 50) { goTo(dx < 0 ? cur+1 : cur-1); startTimer(); }
+    }, {passive:true});
+
+    startTimer();
+  })();
 
   // Calibrate carousel speed proportional to actual track width
   function calibrate(trackId, speed) {
