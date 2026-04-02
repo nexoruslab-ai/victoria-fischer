@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Respuestas Validadas a Objeciones — Victoria Fischer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --berry: #6B2D5E;
+    --berry-deep: #4A1F42;
+    --gold: #C9963A;
+    --gold-pale: #F2E0C0;
+    --dark: #1A0F18;
+    --dark2: #120B10;
+    --white: #FFFFFF;
+    --text-light: rgba(255,255,255,0.85);
+    --text-muted: rgba(255,255,255,0.5);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--dark2); color:var(--white); font-family:'Montserrat',sans-serif; font-weight:300; line-height:1.8; overflow-x:hidden; }
+
+  /* HEADER */
+  .site-header { background:var(--dark2); border-bottom:1px solid rgba(201,150,58,0.2); padding:20px 40px; display:flex; align-items:center; justify-content:space-between; }
+  .site-header .brand { font-family:'Playfair Display',serif; font-size:1rem; letter-spacing:.18em; color:var(--gold); text-transform:uppercase; }
+  .site-header .pack-label { font-size:.68rem; letter-spacing:.22em; color:var(--text-muted); text-transform:uppercase; }
+
+  /* HERO */
+  .hero { background:linear-gradient(160deg,var(--dark2) 0%,var(--berry-deep) 55%,var(--dark2) 100%); padding:90px 40px 80px; text-align:center; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:radial-gradient(ellipse at 50% 0%, rgba(201,150,58,0.07) 0%, transparent 65%); pointer-events:none; }
+  .hero-eyebrow { font-size:.68rem; letter-spacing:.3em; color:var(--gold); text-transform:uppercase; margin-bottom:24px; }
+  .hero h1 { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(2rem,5vw,3.6rem); font-weight:600; color:var(--white); line-height:1.2; margin-bottom:12px; }
+  .hero h1 span { color:var(--gold); }
+  .hero-subtitle { font-size:.88rem; letter-spacing:.14em; color:var(--gold-pale); text-transform:uppercase; margin-bottom:30px; }
+  .hero-divider { width:60px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:0 auto 36px; }
+  .hero-intro { max-width:640px; margin:0 auto; font-size:1.02rem; color:var(--text-light); line-height:1.9; }
+  .hero-intro strong { color:var(--gold-pale); font-weight:500; }
+
+  /* METHODOLOGY STRIP */
+  .method-strip { background:var(--dark); border-top:1px solid rgba(201,150,58,0.12); border-bottom:1px solid rgba(201,150,58,0.12); padding:50px 40px; }
+  .method-strip-inner { max-width:860px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:32px; }
+  .method-item { display:flex; gap:16px; align-items:flex-start; }
+  .method-icon { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--gold); font-weight:700; line-height:1; min-width:28px; }
+  .method-text {}
+  .method-name { font-size:.68rem; letter-spacing:.2em; color:var(--gold); text-transform:uppercase; margin-bottom:6px; }
+  .method-desc { font-size:.87rem; color:var(--text-light); line-height:1.7; }
+
+  /* FILTER BAR */
+  .filter-section { background:var(--dark2); padding:40px 40px 0; position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(255,255,255,0.06); }
+  .filter-inner { max-width:1000px; margin:0 auto; }
+  .filter-label { font-size:.6rem; letter-spacing:.26em; color:var(--text-muted); text-transform:uppercase; margin-bottom:14px; }
+  .filter-tabs { display:flex; flex-wrap:wrap; gap:8px; padding-bottom:24px; }
+  .filter-tab {
+    padding:9px 20px;
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.12);
+    color:var(--text-muted);
+    font-family:'Montserrat',sans-serif;
+    font-size:.65rem;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:all .25s;
+    white-space:nowrap;
+  }
+  .filter-tab:hover { border-color:var(--gold); color:var(--gold); }
+  .filter-tab.active { background:var(--berry); border-color:var(--berry); color:var(--white); }
+
+  /* MAIN */
+  .main-wrap { max-width:1000px; margin:0 auto; padding:60px 40px; }
+
+  /* OBJECTION CARD */
+  .objection-block { margin-bottom:60px; }
+  .objection-block.hidden { display:none; }
+
+  .obj-header {
+    background:linear-gradient(135deg,var(--berry-deep),rgba(74,31,66,0.6));
+    border:1px solid rgba(107,45,94,0.5);
+    padding:24px 28px;
+    margin-bottom:20px;
+    position:relative;
+    overflow:hidden;
+  }
+  .obj-header::before { content:''; position:absolute; top:0; right:0; width:120px; height:100%; background:linear-gradient(90deg,transparent,rgba(201,150,58,0.04)); pointer-events:none; }
+  .obj-meta { display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+  .obj-num { font-family:'Playfair Display',serif; font-size:2rem; color:rgba(201,150,58,0.25); font-weight:700; line-height:1; }
+  .obj-tag { font-size:.58rem; letter-spacing:.22em; color:var(--gold); text-transform:uppercase; border:1px solid rgba(201,150,58,0.3); padding:4px 10px; }
+  .obj-phrase { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.2rem,3vw,1.65rem); font-weight:600; color:var(--white); margin-bottom:8px; }
+  .obj-why { font-size:.82rem; color:var(--text-muted); line-height:1.7; max-width:600px; }
+  .obj-why strong { color:var(--gold-pale); font-weight:500; }
+
+  /* ROOT CAUSE */
+  .root-cause { display:flex; gap:8px; margin-top:14px; flex-wrap:wrap; }
+  .root-tag { font-size:.6rem; letter-spacing:.16em; color:rgba(201,150,58,.6); text-transform:uppercase; background:rgba(201,150,58,0.08); padding:4px 12px; border-radius:0; }
+
+  /* RESPONSES */
+  .responses-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
+  .response-card { background:rgba(26,15,24,0.8); border:1px solid rgba(255,255,255,0.06); padding:22px 24px; position:relative; transition:border-color .25s; }
+  .response-card:hover { border-color:rgba(201,150,58,0.25); }
+  .resp-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; }
+  .resp-option { font-size:.6rem; letter-spacing:.22em; color:var(--gold); text-transform:uppercase; }
+  .resp-technique { font-size:.58rem; letter-spacing:.14em; color:rgba(255,255,255,.35); text-transform:uppercase; background:rgba(107,45,94,0.3); padding:3px 9px; }
+  .resp-text { font-family:'Playfair Display',serif; font-style:italic; font-size:.92rem; color:var(--gold-pale); line-height:1.8; margin-bottom:14px; }
+  .resp-note { font-size:.78rem; color:var(--text-muted); line-height:1.65; border-top:1px solid rgba(255,255,255,.05); padding-top:12px; }
+  .resp-note strong { color:rgba(255,255,255,.65); font-weight:500; }
+
+  /* FOLLOW-UP */
+  .follow-up { background:rgba(107,45,94,0.12); border-left:2px solid rgba(201,150,58,0.4); padding:16px 20px; margin-top:16px; }
+  .follow-up-label { font-size:.58rem; letter-spacing:.24em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }
+  .follow-up p { font-size:.85rem; color:var(--gold-pale); font-style:italic; font-family:'Playfair Display',serif; line-height:1.7; }
+
+  /* METHODOLOGY BOX */
+  .method-box { background:rgba(201,150,58,0.05); border:1px solid rgba(201,150,58,0.2); padding:28px 32px; margin:50px 0; text-align:center; }
+  .method-box-title { font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; color:var(--white); margin-bottom:12px; }
+  .method-box-text { font-size:.88rem; color:var(--text-light); line-height:1.85; max-width:620px; margin:0 auto; }
+  .method-box-text strong { color:var(--gold-pale); font-weight:500; }
+
+  /* QUOTE STRIP */
+  .quote-strip { background:linear-gradient(135deg,var(--berry-deep) 0%,var(--berry) 50%,var(--berry-deep) 100%); padding:70px 40px; text-align:center; position:relative; overflow:hidden; }
+  .quote-strip::before { content:'\201C'; font-family:'Playfair Display',serif; font-size:18rem; color:rgba(255,255,255,0.03); position:absolute; top:-50px; left:20px; line-height:1; }
+  .quote-text { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.2rem,3vw,1.9rem); color:var(--white); max-width:700px; margin:0 auto 20px; line-height:1.55; position:relative; z-index:1; }
+  .quote-attr { font-size:.7rem; letter-spacing:.25em; color:var(--gold-pale); text-transform:uppercase; }
+
+  /* CLOSING */
+  .closing-section { background:var(--dark2); padding:80px 40px; text-align:center; border-top:1px solid rgba(201,150,58,.15); }
+  .closing-section h2 { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.4rem,3.5vw,2rem); color:var(--white); margin-bottom:18px; }
+  .closing-section h2 span { color:var(--gold); }
+  .closing-section p { max-width:560px; margin:0 auto 36px; font-size:.95rem; color:var(--text-light); line-height:1.9; }
+  .cta-btn { display:inline-block; padding:16px 46px; background:transparent; border:1px solid var(--gold); color:var(--gold); font-family:'Montserrat',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; transition:all .3s; }
+  .cta-btn:hover { background:var(--gold); color:var(--dark2); }
+
+  /* FOOTER */
+  footer { background:var(--dark2); border-top:1px solid rgba(255,255,255,.06); padding:30px 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  footer .brand { font-family:'Playfair Display',serif; font-size:.85rem; color:var(--gold); letter-spacing:.14em; }
+  footer .legal { font-size:.65rem; color:rgba(255,255,255,.25); letter-spacing:.1em; }
+
+  /* RESPONSIVE */
+  @media (max-width:600px) {
+    .site-header, .method-strip, .filter-section, .main-wrap, .quote-strip, .closing-section, footer { padding-left:24px; padding-right:24px; }
+    .hero { padding:60px 24px; }
+    .filter-section { padding-top:30px; }
+    .responses-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <span class="brand">Victoria Fischer</span>
+  <span class="pack-label">Pack 03 · Mentoría Exclusiva</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Manual Práctico · Arsenal de Cierre</p>
+  <h1>Respuestas <span>Validadas</span><br>a las Objeciones.</h1>
+  <p class="hero-subtitle">Manual Completo · Cualquier Nicho · Método Victoria Fischer</p>
+  <div class="hero-divider"></div>
+  <p class="hero-intro">
+    El primer NO no es el final de la conversación — es el comienzo de la negociación real.<br><br>
+    <strong>Este manual contiene las respuestas probadas para cada objeción, con PNL integrada y el método Empatizar + Direccionar que convierte el rechazo en avance.</strong>
+  </p>
+</section>
+
+<!-- METHODOLOGY STRIP -->
+<section class="method-strip">
+  <div class="method-strip-inner">
+    <div class="method-item">
+      <div class="method-icon">E</div>
+      <div class="method-text">
+        <div class="method-name">Empatizar</div>
+        <div class="method-desc">Validar la emoción sin comprar la objeción. La persona siente que fue escuchada — sin que tú hayas cedido terreno.</div>
+      </div>
+    </div>
+    <div class="method-item">
+      <div class="method-icon">+</div>
+      <div class="method-text">
+        <div class="method-name">Direccionar</div>
+        <div class="method-desc">Redirigir hacia el cierre con una pregunta o un marco que mueva la conversación hacia adelante, no hacia atrás.</div>
+      </div>
+    </div>
+    <div class="method-item">
+      <div class="method-icon">↺</div>
+      <div class="method-text">
+        <div class="method-name">Pedir dos veces</div>
+        <div class="method-desc">Una gran cerradora nunca abandona al primer NO. El cierre de transición se repite — con calma, con certeza, sin desesperación.</div>
+      </div>
+    </div>
+    <div class="method-item">
+      <div class="method-icon">◈</div>
+      <div class="method-text">
+        <div class="method-name">Marco Fuerte</div>
+        <div class="method-desc">Tu certeza es más poderosa que su vacilación. No abandones el marco. Sostén la certeza y el prospecto se ancla a ella.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-section">
+  <div class="filter-inner">
+    <p class="filter-label">Filtrar por categoría</p>
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">Todas las Objeciones</button>
+      <button class="filter-tab" data-filter="precio">Precio &amp; Dinero</button>
+      <button class="filter-tab" data-filter="tiempo">Tiempo &amp; Urgencia</button>
+      <button class="filter-tab" data-filter="autoridad">Autoridad</button>
+      <button class="filter-tab" data-filter="confianza">Confianza &amp; Duda</button>
+      <button class="filter-tab" data-filter="competencia">Competencia</button>
+      <button class="filter-tab" data-filter="previa">Pre-Presentación</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN OBJECTIONS -->
+<div class="main-wrap">
+
+  <div class="method-box">
+    <p class="method-box-title">Antes de usar este manual</p>
+    <p class="method-box-text">Las objeciones se responden <strong>solo después de haber hecho la presentación completa</strong>. Antes de eso, son comentarios — no objeciones reales. Si surge algo antes de la presentación, empatizan y continúan. <strong>Una objeción que no conoces es la única que no puedes resolver.</strong></p>
+  </div>
+
+  <!-- OBJ 01: LO TENGO QUE PENSAR -->
+  <div class="objection-block" data-category="tiempo confianza">
+    <div class="obj-header">
+      <div class="obj-meta">
+        <span class="obj-num">01</span>
+        <span class="obj-tag">Tiempo · Duda</span>
+      </div>
+      <p class="obj-phrase">"Lo tengo que pensar."</p>
+      <p class="obj-why">La objeción más común y la más frecuentemente mal manejada. <strong>Detrás de "lo pienso" siempre hay una razón real que la persona no quiere decir</strong> — generalmente precio, confianza o falta de claridad. Tu trabajo es descubrirla.</p>
+      <div class="root-cause">
+        <span class="root-tag">Falta de certeza</span>
+        <span class="root-tag">Objeción real escondida</span>
+        <span class="root-tag">Miedo a decidir</span>
+      </div>
+    </div>
+    <div class="responses-grid">
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 01</span><span class="resp-technique">Empatizar + Descubrir</span></div>
+        <p class="resp-text">"Entiendo perfectamente que lo quieras pensar. Y sé que detrás de eso hay una razón que todavía no me dijiste. ¿Me la compartirías? Así lo hablamos entre las dos."</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> No compra la objeción. Valida la emoción y abre espacio para la razón real. La persona siente que fue escuchada y baja la guardia.</p>
+      </div>
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 02</span><span class="resp-technique">Las 3 Verdaderas Razones</span></div>
+        <p class="resp-text">"Antes de que lo pienses, ¿me dejarías decirte las 3 razones que generalmente pasan por la mente en ese momento? La primera es si tienes el dinero. La segunda es si confías en que obtendrás resultados. La tercera es si realmente estás comprometida. ¿Cuál de las tres te surge hoy?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Externaliza las razones reales de forma no amenazante. El prospecto elige entre tres opciones ya nombradas —lo que elimina la incomodidad de decirlo por primera vez.</p>
+      </div>
+    </div>
+    <div class="follow-up">
+      <p class="follow-up-label">Cierre de Transición</p>
+      <p>"Basándonos en lo que me dijiste, ¿hay alguna razón por la que no empezaríamos hoy?"</p>
+    </div>
+  </div>
+
+  <!-- OBJ 02: NO TENGO EL DINERO -->
+  <div class="objection-block" data-category="precio">
+    <div class="obj-header">
+      <div class="obj-meta">
+        <span class="obj-num">02</span>
+        <span class="obj-tag">Precio · Dinero</span>
+      </div>
+      <p class="obj-phrase">"No tengo el dinero."</p>
+      <p class="obj-why">En el 90% de los casos, <strong>no es un problema de liquidez — es un problema de prioridad percibida</strong>. Si la persona tiene certeza del valor y urgencia real, el dinero aparece. Tu trabajo es conectarla con ambos.</p>
+      <div class="root-cause">
+        <span class="root-tag">Precio sobre valor</span>
+        <span class="root-tag">Sin urgencia</span>
+        <span class="root-tag">No es prioridad aún</span>
+      </div>
+    </div>
+    <div class="responses-grid">
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 01</span><span class="resp-technique">El 90% · Prueba Social</span></div>
+        <p class="resp-text">"El 90% de las personas que se sumaron al programa tenían exactamente el mismo punto de partida. Como realmente lo querían hacer, lo hicieron. Entonces te pregunto — ¿vos realmente lo querés hacer?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Prueba social que normaliza la situación. El "sí" a la pregunta final activa el compromiso interno — y el dinero deja de ser el obstáculo principal.</p>
+      </div>
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 02</span><span class="resp-technique">Reencuadre · Costo de Inacción</span></div>
+        <p class="resp-text">"Ese costo lo vas a pagar de todas formas. La pregunta es cuál de los dos elegís: el costo del programa — o el costo de seguir 6 meses más en la misma situación. ¿Cuál es más caro en realidad?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Reencuadra el precio como la opción más barata. Obliga a comparar dos costos reales, no precio contra cero.</p>
+      </div>
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 03</span><span class="resp-technique">Lenguaje Presupositivo</span></div>
+        <p class="resp-text">"Si el dinero no fuera el tema, ¿lo harías?" — "Sí." — "Entonces el dinero aparece cuando realmente queremos algo. Probemos pasar la tarjeta hoy — si pasa, pasa. No tienes nada que perder con intentarlo."</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Separa la voluntad del obstáculo técnico. Si el "sí" condicional ya existe, el dinero es un detalle logístico, no una decisión.</p>
+      </div>
+    </div>
+    <div class="follow-up">
+      <p class="follow-up-label">Cierre de Transición</p>
+      <p>"Hagamos el primer pago hoy y guardas tu lugar. ¿Qué método de pago te queda más cómodo?"</p>
+    </div>
+  </div>
+
+  <!-- OBJ 03: ES MUY CARO -->
+  <div class="objection-block" data-category="precio">
+    <div class="obj-header">
+      <div class="obj-meta">
+        <span class="obj-num">03</span>
+        <span class="obj-tag">Precio · Valor</span>
+      </div>
+      <p class="obj-phrase">"Es muy caro."</p>
+      <p class="obj-why">"Caro" no es una opinión sobre el precio — es una declaración sobre el <strong>valor percibido</strong>. Si el prospecto dice "caro", el trabajo de la presentación aún no está completo. No defiendas el precio —cambia el marco de comparación.</p>
+      <div class="root-cause">
+        <span class="root-tag">Valor < Precio en la mente del prospecto</span>
+        <span class="root-tag">Sin claridad del ROI</span>
+      </div>
+    </div>
+    <div class="responses-grid">
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 01</span><span class="resp-technique">Pregunta Socrática · Reencuadre</span></div>
+        <p class="resp-text">"¿Caro comparado a qué, exactamente?" — [escucha] — "Entiendo. Entonces cuéntame: ¿qué tendría que ofrecerte para que el valor justificara claramente la inversión?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> "Caro" es siempre relativo. La pregunta Socrática obliga a nombrar el marco de comparación —y una vez visible, puedes trabajar con él directamente.</p>
+      </div>
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 02</span><span class="resp-technique">Cálculo de ROI en Voz Alta</span></div>
+        <p class="resp-text">"Hagamos los números juntas. Si con esto lograras cerrar solo [X] ventas más por mes, ¿cuánto significaría eso para ti? ¿Recuperarías la inversión? ¿En cuánto tiempo?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> El prospecto hace el cálculo por sí mismo —y cuando lo hace, el precio se justifica solo. No le convences. Ella se convence.</p>
+      </div>
+    </div>
+    <div class="follow-up">
+      <p class="follow-up-label">Cierre de Transición</p>
+      <p>"Entonces, con lo que acabas de calcular — ¿habría alguna razón por la que no empezaríamos hoy?"</p>
+    </div>
+  </div>
+
+  <!-- OBJ 04: LO HABLO CON MI PAREJA / SOCIO -->
+  <div class="objection-block" data-category="autoridad">
+    <div class="obj-header">
+      <div class="obj-meta">
+        <span class="obj-num">04</span>
+        <span class="obj-tag">Autoridad · Decisión</span>
+      </div>
+      <p class="obj-phrase">"Lo tengo que hablar con mi pareja / socio."</p>
+      <p class="obj-why">Cuando hay múltiples decisores, la mejor solución es traerlos a la conversación <strong>antes de que explote la objeción</strong>. Cuando ya surgió, la estrategia es empoderar a quien está frente a ti — sin atacar a quien no está.</p>
+      <div class="root-cause">
+        <span class="root-tag">Múltiples tomadores de decisión</span>
+        <span class="root-tag">Miedo a decidir sola</span>
+        <span class="root-tag">Objeción de escape</span>
+      </div>
+    </div>
+    <div class="responses-grid">
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 01 — Preventiva</span><span class="resp-technique">Desarmar Antes de que Explote</span></div>
+        <p class="resp-text">Antes de la presentación: "Una cosa — ¿sos la única persona que toma decisiones sobre esto, o hay alguien más que debería estar en esta conversación? Te lo pregunto porque si hay alguien más, prefiero que estén juntas para aprovechar bien el tiempo."</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Elimina la objeción antes de que aparezca. Si el socio o pareja no puede estar, la persona que sí está asume la responsabilidad de la decisión.</p>
+      </div>
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 02 — Empoderamiento</span><span class="resp-technique">Identidad + Liderazgo</span></div>
+        <p class="resp-text">"Esta decisión es para vos, ¿verdad? Tu pareja no estuvo en esta conversación — no tiene la misma información que tenés vos ahora. Si ves que esto es bueno para ti, ¿necesitás permiso para tomar una buena decisión por tu propia vida?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Activa la identidad de liderazgo personal. Sin atacar al tercero — solo haciendo visible que la decisión le pertenece a ella.</p>
+      </div>
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 03 — Cierre Inmediato</span><span class="resp-technique">Agarra las Riendas</span></div>
+        <p class="resp-text">"¿Cuándo hablarías con tu socio?" — [responde] — "Perfecto. ¿Y si te dice que no, sería una buena o mala noticia para vos?" — [responde] — "Entonces ve a esa conversación con una decisión ya tomada — no con una consulta. ¿Cuál método de pago te queda más cómodo?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Invierte la dinámica: la persona ya decidió, y solo informa. Cambia el marco de "pedir permiso" a "comunicar una decisión".</p>
+      </div>
+    </div>
+    <div class="follow-up">
+      <p class="follow-up-label">Cierre de Transición</p>
+      <p>"Agarra las riendas de esta decisión. Es tuya. ¿Empezamos hoy?"</p>
+    </div>
+  </div>
+
+  <!-- OBJ 05: NO ES EL MOMENTO -->
+  <div class="objection-block" data-category="tiempo">
+    <div class="obj-header">
+      <div class="obj-meta">
+        <span class="obj-num">05</span>
+        <span class="obj-tag">Tiempo · Urgencia</span>
+      </div>
+      <p class="obj-phrase">"No es el momento."</p>
+      <p class="obj-why">Si el prospecto no tiene urgencia, empezar hoy o en 6 meses le parece indiferente. <strong>La urgencia no se fabrica con descuentos — se crea haciendo visible el costo de esperar</strong>. Las mejores preguntas Socráticas lo logran sin presión artificial.</p>
+      <div class="root-cause">
+        <span class="root-tag">Sin urgencia real</span>
+        <span class="root-tag">Dolor no amplificado</span>
+        <span class="root-tag">Objeción de escape</span>
+      </div>
+    </div>
+    <div class="responses-grid">
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 01</span><span class="resp-technique">Pregunta de Proyección</span></div>
+        <p class="resp-text">"Me dijiste que llevas [X tiempo] con esto. Si no hacés nada hoy, ¿en qué momento sería el momento? Y en ese momento, ¿dónde estarás respecto a donde querés estar?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Hace visible el costo del tiempo. No hay presión artificial — hay consecuencias reales que la persona se describe a sí misma.</p>
+      </div>
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 02</span><span class="resp-technique">El Costo del Tiempo</span></div>
+        <p class="resp-text">"¿Cuándo sería el momento ideal para vos? ¿Y qué hace diferente ese momento a este?" — [escucha] — "Entonces básicamente la diferencia entre hoy y ese momento es [X]. ¿Ese [X] justifica esperar y seguir pagando el costo de no tenerlo resuelto?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Socráticamente, la persona nombra las condiciones del "momento ideal" —y al compararlas con hoy, muchas veces descubre que no son tan diferentes.</p>
+      </div>
+    </div>
+    <div class="follow-up">
+      <p class="follow-up-label">Cierre de Transición</p>
+      <p>"Entonces no hay razón para esperar. ¿Empezamos hoy y te sacás esto de encima?"</p>
+    </div>
+  </div>
+
+  <!-- OBJ 06: YA TENGO ALGO SIMILAR / COMPETENCIA -->
+  <div class="objection-block" data-category="competencia confianza">
+    <div class="obj-header">
+      <div class="obj-meta">
+        <span class="obj-num">06</span>
+        <span class="obj-tag">Competencia · Diferenciación</span>
+      </div>
+      <p class="obj-phrase">"Ya tengo algo similar" / "Lo consigo más barato."</p>
+      <p class="obj-why">No defiendes lo que ofreces. <strong>Haces preguntas que dejan que el prospecto articule por qué lo que tiene no está dando los resultados que quiere</strong>. La diferenciación viene de sus propias palabras, no de las tuyas.</p>
+      <div class="root-cause">
+        <span class="root-tag">Percepción de commoditización</span>
+        <span class="root-tag">No ve diferenciación de valor</span>
+      </div>
+    </div>
+    <div class="responses-grid">
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 01</span><span class="resp-technique">Pregunta Socrática · Resultados</span></div>
+        <p class="resp-text">"¡Perfecto! ¿Y cómo te está yendo con eso? ¿Está dándote los resultados que buscabas cuando lo empezaste?" — [escucha] — "Entonces ¿qué tendría que ser diferente para que valga la pena explorar algo que vaya más lejos?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Si la alternativa estuviera funcionando, no estarías teniendo esta conversación. La pregunta lo hace visible sin atacar su elección previa.</p>
+      </div>
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 02</span><span class="resp-technique">Diferenciación por Especificidad</span></div>
+        <p class="resp-text">"Lo más barato lo puedes conseguir. La pregunta es: ¿querés la opción más barata, o querés la que te da los resultados que me describiste antes? No son lo mismo. ¿Cuál de las dos importa más?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Desplaza la conversación de precio a resultado. Una vez que el foco está en el resultado, el precio deja de ser el criterio de decisión.</p>
+      </div>
+    </div>
+    <div class="follow-up">
+      <p class="follow-up-label">Cierre de Transición</p>
+      <p>"Entonces la pregunta real no es si hay algo más barato. Es si lo que tenés hoy te lleva donde querés estar. ¿Lo ves así?"</p>
+    </div>
+  </div>
+
+  <!-- OBJ 07: NO CONFÍO / NO TE CONOZCO -->
+  <div class="objection-block" data-category="confianza">
+    <div class="obj-header">
+      <div class="obj-meta">
+        <span class="obj-num">07</span>
+        <span class="obj-tag">Confianza · Prueba Social</span>
+      </div>
+      <p class="obj-phrase">"No te conozco" / "No sé si funciona."</p>
+      <p class="obj-why">La desconfianza no se argumenta — se demuestra. <strong>Muestra evidencia específica, no promesas generales</strong>. El prospecto necesita ver que alguien como ella ya lo hizo y funcionó.</p>
+      <div class="root-cause">
+        <span class="root-tag">Falta de certeza en resultados</span>
+        <span class="root-tag">Sin prueba social específica</span>
+        <span class="root-tag">Experiencias previas negativas</span>
+      </div>
+    </div>
+    <div class="responses-grid">
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 01</span><span class="resp-technique">Prueba Social Específica</span></div>
+        <p class="resp-text">"Tiene sentido. Déjame mostrarte algo concreto." — [comparte testimonio o caso real específico] — "Esta persona tenía exactamente el mismo punto de partida que vos. Eso ya lo vivimos. Lo que necesito saber es si esto aplica a tu situación — ¿lo ves?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> No defiendes con palabras —demuestras con evidencia. La especificidad de la historia hace el trabajo que los argumentos no pueden hacer.</p>
+      </div>
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 02</span><span class="resp-technique">Transparencia Radical</span></div>
+        <p class="resp-text">"No espero que confíes solo porque yo lo digo. Eso sería raro. Pero sí quiero que evalúes la evidencia — ¿qué necesitarías ver para que la decisión sea más fácil?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Valida la desconfianza en lugar de combatirla. Eso en sí genera más confianza. Y convierte la objeción en una pregunta que puedes responder con evidencia.</p>
+      </div>
+    </div>
+    <div class="follow-up">
+      <p class="follow-up-label">Cierre de Transición</p>
+      <p>"Basándonos en todo lo que te mostré, ¿hay alguna razón que te impediría empezar hoy?"</p>
+    </div>
+  </div>
+
+  <!-- OBJ 08: MANDAME MÁS INFO -->
+  <div class="objection-block" data-category="tiempo confianza">
+    <div class="obj-header">
+      <div class="obj-meta">
+        <span class="obj-num">08</span>
+        <span class="obj-tag">Escape · Dilación</span>
+      </div>
+      <p class="obj-phrase">"Mandame más información."</p>
+      <p class="obj-why">Esta objeción casi nunca es sobre información real — es una forma cortés de <strong>escapar de la decisión sin decir que no</strong>. El PDF que mandás raramente se lee. Ve a la raíz real antes de aceptar.</p>
+      <div class="root-cause">
+        <span class="root-tag">Objeción de escape</span>
+        <span class="root-tag">Algo no quedó claro</span>
+        <span class="root-tag">Sin urgencia real</span>
+      </div>
+    </div>
+    <div class="responses-grid">
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 01</span><span class="resp-technique">Ir a la Raíz Real</span></div>
+        <p class="resp-text">"Claro, te puedo mandar info. Antes quiero entender: ¿hay algo específico que no quedó claro en la conversación? Porque si hay algo que te genera duda, prefiero resolverlo ahora entre las dos."</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> No niega la información —pero no la da como escape. Abre espacio para que la objeción real salga a la superficie donde puedes trabajarla.</p>
+      </div>
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 02</span><span class="resp-technique">Presupositivo + Momentum</span></div>
+        <p class="resp-text">"La información más importante ya la tenés — estuviste en toda la conversación. Lo que me pregunto es: con todo lo que hablamos, ¿hay algo puntual que te esté frenando hoy?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Redirige desde la táctica de dilación hacia la objeción concreta. El PDF es un sustituto de la decisión —tu trabajo es hacerla visible, no alimentar el sustituto.</p>
+      </div>
+    </div>
+    <div class="follow-up">
+      <p class="follow-up-label">Cierre de Transición</p>
+      <p>"¿Qué necesitarías saber para tomar la decisión hoy — sin esperar el email?"</p>
+    </div>
+  </div>
+
+  <!-- OBJ 09: PRE-PRESENTACIÓN -->
+  <div class="objection-block" data-category="previa">
+    <div class="obj-header">
+      <div class="obj-meta">
+        <span class="obj-num">09</span>
+        <span class="obj-tag">Pre-Presentación · Prevención</span>
+      </div>
+      <p class="obj-phrase">"Mira que hoy no voy a comprar nada."</p>
+      <p class="obj-why">Esta frase aparece antes de la presentación y es <strong>solo un comentario, no una objeción real</strong>. La persona se protege de antemano. No la rebatas — esquívala y continúa.</p>
+      <div class="root-cause">
+        <span class="root-tag">Experiencias previas de presión</span>
+        <span class="root-tag">Defensiva de entrada</span>
+      </div>
+    </div>
+    <div class="responses-grid">
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 01</span><span class="resp-technique">Empatizar + Continuar</span></div>
+        <p class="resp-text">"Perfecto, yo tampoco estoy acá para venderte nada. Solo quiero entender bien tu situación y ver si tiene sentido hacer algo juntas. ¿Me contás un poco más sobre [situación]?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> Baja la guardia completamente. Y la conversación Socrática que sigue hace el trabajo —sin que nadie haya "vendido".</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJ 10: PRECIO AL INICIO -->
+  <div class="objection-block" data-category="previa precio">
+    <div class="obj-header">
+      <div class="obj-meta">
+        <span class="obj-num">10</span>
+        <span class="obj-tag">Pre-Presentación · Precio</span>
+      </div>
+      <p class="obj-phrase">"¿Cuánto sale?" (al inicio)</p>
+      <p class="obj-why">Dar el precio antes de haber creado valor es un error técnico. <strong>El precio sin contexto siempre parece caro</strong>. La respuesta ideal da un rango aproximado y redirige hacia la calificación profunda.</p>
+      <div class="root-cause">
+        <span class="root-tag">Curiosidad inicial</span>
+        <span class="root-tag">Evaluación de presupuesto</span>
+      </div>
+    </div>
+    <div class="responses-grid">
+      <div class="response-card">
+        <div class="resp-header"><span class="resp-option">Respuesta 01</span><span class="resp-technique">Dar Rango + Redirigir</span></div>
+        <p class="resp-text">"El costo varía según el programa — va desde [X] hasta [X]. Por eso primero me gustaría conocer bien tu situación, así veo cuál se acomoda mejor a lo que estás buscando. ¿Te parece?"</p>
+        <p class="resp-note"><strong>Por qué funciona:</strong> No evade ni da toda la información prematuramente. Da lo suficiente para no generar fricción y mantiene el liderazgo de la conversación.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main-wrap -->
+
+<!-- QUOTE STRIP -->
+<section class="quote-strip">
+  <p class="quote-text">"El primer NO no es el final de la negociación. Es el inicio. Y una cerradora que sabe esto convierte cada objeción en el siguiente paso hacia el sí."</p>
+  <p class="quote-attr">— Método Victoria Fischer · Empatizar + Direccionar</p>
+</section>
+
+<!-- CLOSING -->
+<section class="closing-section">
+  <h2>El arsenal existe.<br>Ahora toca <span>internalizarlo</span>.</h2>
+  <p>
+    Elige una objeción por semana. Practica las respuestas en voz alta. Grábate. Ajusta el tono. Al cabo de 10 semanas, tendrás 10 objeciones internalizadas — no memorizadas.
+  </p>
+  <a href="https://victoriafischer.com" class="cta-btn">Explorar el Método Completo</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="brand">Victoria Fischer</span>
+  <span class="legal">Material exclusivo para clientes · Uso personal · No distribuir</span>
+</footer>
+
+<script>
+  // Filter functionality
+  const tabs = document.querySelectorAll('.filter-tab');
+  const blocks = document.querySelectorAll('.objection-block');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const filter = tab.dataset.filter;
+
+      blocks.forEach(block => {
+        if (filter === 'all') {
+          block.classList.remove('hidden');
+        } else {
+          const cats = (block.dataset.category || '').split(' ');
+          if (cats.includes(filter)) {
+            block.classList.remove('hidden');
+          } else {
+            block.classList.add('hidden');
+          }
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
