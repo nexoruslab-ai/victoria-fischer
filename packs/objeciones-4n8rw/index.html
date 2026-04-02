@@ -577,18 +577,20 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var tabs = document.querySelectorAll('.filter-tab');
+    var tabs   = document.querySelectorAll('.filter-tab');
     var blocks = document.querySelectorAll('.objection-block');
+    var mainWrap = document.querySelector('.main-wrap');
 
     tabs.forEach(function(tab) {
       tab.addEventListener('click', function() {
-        // Update active state on tabs
+
+        // Update active state
         tabs.forEach(function(t) { t.classList.remove('active'); });
         tab.classList.add('active');
 
         var filter = tab.getAttribute('data-filter');
 
-        // Show or hide each objection block
+        // Show or hide each block
         blocks.forEach(function(block) {
           if (filter === 'all') {
             block.style.display = '';
@@ -597,6 +599,13 @@
             block.style.display = (cats.indexOf(filter) !== -1) ? '' : 'none';
           }
         });
+
+        // Scroll to the top of the objections area so filtered results are visible
+        var filterBar = document.querySelector('.filter-section');
+        var filterBarHeight = filterBar ? filterBar.offsetHeight : 0;
+        var targetTop = mainWrap.getBoundingClientRect().top + window.pageYOffset - filterBarHeight - 16;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+
       });
     });
   });
