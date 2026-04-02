@@ -118,12 +118,63 @@
     background-position: center 20%;
     transition: transform 7s ease;
     transform: scale(1.06);
+    position: relative;
+    z-index: 1;
   }
   .photo-slide.ps-active .photo-slide-img { transform: scale(1.0); }
+  /* Blurred background layer (desktop sides fill) */
+  .photo-slide-blur {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(28px) brightness(0.22) saturate(0.5);
+    transform: scale(1.08);
+    z-index: 0;
+    transition: transform 7s ease;
+  }
+  .photo-slide.ps-active .photo-slide-blur { transform: scale(1.04); }
+  /* Caption overlay */
+  .photo-slide-caption {
+    position: absolute;
+    right: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 12;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    pointer-events: none;
+  }
+  .psc-label {
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .psc-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(15px, 1.4vw, 20px);
+    font-style: italic;
+    color: rgba(255,255,255,0.75);
+    text-align: right;
+    line-height: 1.35;
+  }
+  .psc-bar {
+    width: 32px;
+    height: 1.5px;
+    background: var(--gold);
+    opacity: 0.6;
+    margin-left: auto;
+  }
   .photo-slide::after {
     content: '';
     position: absolute;
     inset: 0;
+    z-index: 2;
     background: linear-gradient(
       180deg,
       rgba(5,0,8,0.25) 0%,
@@ -172,11 +223,25 @@
     transition: all 0.35s;
   }
   .photo-dot.pd-active { background: var(--gold); width: 50px; }
+  /* ── DESKTOP: portrait photos with blurred side fill ── */
+  @media (min-width: 601px) {
+    .photo-slide {
+      height: 78vh;
+      min-height: 520px;
+      max-height: 800px;
+    }
+    .photo-slide-img {
+      background-size: contain !important;
+      background-position: center center !important;
+      background-repeat: no-repeat;
+    }
+  }
   @media (max-width: 600px) {
     .photo-slide { height: 60vh; min-height: 340px; }
     .photo-nav { width: 42px; height: 42px; font-size: 18px; }
     .photo-nav-prev { left: 12px; }
     .photo-nav-next { right: 12px; }
+    .photo-slide-caption { display: none; }
   }
 
   /* ── TESTIMONIALS CAROUSEL (full-bleed, 2 rows) ── */
@@ -250,7 +315,7 @@
   }
   .trow-left  { animation: scrollLeft  55s linear infinite; }
   .trow-right { animation: scrollRight 50s linear infinite; }
-  .troz:hover { animation-play-state: paused; }
+  .trow:hover { animation-play-state: paused; }
 
   @keyframes scrollLeft  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
   @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
@@ -645,19 +710,43 @@
     <div class="photo-track" id="photoTrack">
 
       <div class="photo-slide ps-active">
-        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-in-studio-pro.jpeg'); background-position: center 40%;"></div>
+        <div class="photo-slide-blur" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-in-studio-pro.jpeg')"></div>
+        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-in-studio-pro.jpeg')"></div>
+        <div class="photo-slide-caption">
+          <div class="psc-label">Victoria Fischer</div>
+          <div class="psc-bar"></div>
+          <div class="psc-name">Sesión<br>en Estudio</div>
+        </div>
       </div>
 
       <div class="photo-slide">
-        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-in-camerino.jpeg'); background-position: center 35%;"></div>
+        <div class="photo-slide-blur" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-in-camerino.jpeg')"></div>
+        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-in-camerino.jpeg')"></div>
+        <div class="photo-slide-caption">
+          <div class="psc-label">Victoria Fischer</div>
+          <div class="psc-bar"></div>
+          <div class="psc-name">Backstage<br>· Camerino ·</div>
+        </div>
       </div>
 
       <div class="photo-slide">
-        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-stage-scenario-speaker.jpeg'); background-position: center 30%;"></div>
+        <div class="photo-slide-blur" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-stage-scenario-speaker.jpeg')"></div>
+        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-stage-scenario-speaker.jpeg')"></div>
+        <div class="photo-slide-caption">
+          <div class="psc-label">Victoria Fischer</div>
+          <div class="psc-bar"></div>
+          <div class="psc-name">Speaker<br>en Escenario</div>
+        </div>
       </div>
 
       <div class="photo-slide">
-        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-portada-revista.jpeg'); background-position: center 25%;"></div>
+        <div class="photo-slide-blur" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-portada-revista.jpeg')"></div>
+        <div class="photo-slide-img" style="background-image:url('https://raw.githubusercontent.com/nexoruslab-ai/victoria-fischer/main/images/photo-portada-revista.jpeg')"></div>
+        <div class="photo-slide-caption">
+          <div class="psc-label">Victoria Fischer</div>
+          <div class="psc-bar"></div>
+          <div class="psc-name">Portada<br>de Revista</div>
+        </div>
       </div>
 
     </div>
@@ -929,7 +1018,7 @@
         <div class="tc-line"></div>
         <div class="tc-author">
           <div class="tc-avatar">B</div>
-          <div><div class="tc-name">Belén R.</div><div class="tc-role">Nutriciónista · Mendoza</div></div>
+          <div><div class="tc-name">Belén R.</div><div class="tc-role">Nutricionista · Mendoza</div></div>
         </div>
       </div>
 
@@ -990,6 +1079,17 @@
         <div class="tc-author">
           <div class="tc-avatar">F</div>
           <div><div class="tc-name">Florencia M.</div><div class="tc-role">Copywriter · Córdoba</div></div>
+        </div>
+      </div>
+      <div class="tc">
+        <div class="tc-quote-mark">"</div>
+        <div class="tc-tag">Pack 02</div>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-text">"Me daba vergüenza hablar de dinero con clientes. Victoria me hizo entender que ese malestar era mío, no de ellos. La segunda llamada post-mentoría cerré sin titubear. Fue increíble."</p>
+        <div class="tc-line"></div>
+        <div class="tc-author">
+          <div class="tc-avatar">I</div>
+          <div><div class="tc-name">Ivana S.</div><div class="tc-role">Diseñadora UX · Rosario</div></div>
         </div>
       </div>
       <div class="tc">
