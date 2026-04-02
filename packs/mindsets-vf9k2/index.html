@@ -14,398 +14,117 @@
     --dark: #1A0F18;
     --dark2: #120B10;
     --white: #FFFFFF;
-    --off-white: #FAF6F2;
-    --text-light: rgba(255,255,255,0.85);
-    --text-muted: rgba(255,255,255,0.55);
+    --text-light: rgba(255,255,255,0.87);
+    --text-muted: rgba(255,255,255,0.5);
   }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--dark2); color:var(--white); font-family:'Montserrat',sans-serif; font-weight:300; line-height:1.9; overflow-x:hidden; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* HEADER */
+  .site-header { background:var(--dark2); border-bottom:1px solid rgba(201,150,58,0.2); padding:20px 40px; display:flex; align-items:center; justify-content:space-between; }
+  .site-header .brand { font-family:'Playfair Display',serif; font-size:1rem; letter-spacing:.18em; color:var(--gold); text-transform:uppercase; }
+  .site-header .pack-label { font-size:.68rem; letter-spacing:.22em; color:var(--text-muted); text-transform:uppercase; }
 
-  html { scroll-behavior: smooth; }
+  /* HERO */
+  .hero { background:linear-gradient(160deg,var(--dark2) 0%,var(--berry-deep) 60%,var(--dark2) 100%); padding:100px 40px 90px; text-align:center; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(201,150,58,0.08) 0%,transparent 70%); pointer-events:none; }
+  .hero-eyebrow { font-size:.68rem; letter-spacing:.3em; color:var(--gold); text-transform:uppercase; margin-bottom:24px; }
+  .hero h1 { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(2.2rem,5vw,3.8rem); font-weight:600; color:var(--white); line-height:1.2; margin-bottom:14px; }
+  .hero h1 span { color:var(--gold); }
+  .hero-subtitle { font-size:.88rem; letter-spacing:.14em; color:var(--gold-pale); text-transform:uppercase; margin-bottom:32px; }
+  .hero-divider { width:60px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:0 auto 40px; }
+  .hero-intro { max-width:680px; margin:0 auto; font-size:1.05rem; color:var(--text-light); line-height:1.95; }
+  .hero-intro strong { color:var(--gold-pale); font-weight:500; }
 
-  body {
-    background: var(--dark2);
-    color: var(--white);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    line-height: 1.8;
-    overflow-x: hidden;
-  }
+  /* INTRO SECTION */
+  .section-intro { background:var(--dark); padding:70px 40px; border-top:1px solid rgba(201,150,58,.12); border-bottom:1px solid rgba(201,150,58,.12); }
+  .section-intro-inner { max-width:760px; margin:0 auto; }
+  .section-intro p { font-size:1rem; color:var(--text-light); line-height:2; margin-bottom:20px; }
+  .section-intro p:last-child { margin-bottom:0; }
+  .section-intro p em { font-family:'Playfair Display',serif; font-style:italic; font-size:1.05rem; color:var(--gold-pale); }
+  .section-intro p strong { color:var(--white); font-weight:500; }
 
-  /* ── HEADER ── */
-  .site-header {
-    background: var(--dark2);
-    border-bottom: 1px solid rgba(201,150,58,0.2);
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .site-header .brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    letter-spacing: 0.18em;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
-  .site-header .pack-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-    color: var(--text-muted);
-    text-transform: uppercase;
-  }
+  /* MINDSET BLOCKS */
+  .mindsets-container { max-width:860px; margin:0 auto; padding:80px 40px; }
+  .mindset-block { margin-bottom:100px; }
 
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(160deg, var(--dark2) 0%, var(--berry-deep) 60%, var(--dark2) 100%);
-    padding: 90px 40px 80px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(201,150,58,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.2;
-    margin-bottom: 12px;
-  }
-  .hero h1 span {
-    color: var(--gold);
-  }
-  .hero-subtitle {
-    font-size: 0.88rem;
-    letter-spacing: 0.14em;
-    color: var(--gold-pale);
-    text-transform: uppercase;
-    margin-bottom: 30px;
-  }
-  .hero-divider {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 0 auto 36px;
-  }
-  .hero-intro {
-    max-width: 620px;
-    margin: 0 auto;
-    font-size: 1.05rem;
-    color: var(--text-light);
-    line-height: 1.9;
-  }
-  .hero-intro strong {
-    color: var(--gold-pale);
-    font-weight: 500;
-  }
+  .mindset-header { display:flex; align-items:flex-start; gap:28px; margin-bottom:40px; padding-bottom:28px; border-bottom:1px solid rgba(201,150,58,.18); }
+  .mindset-num-big { font-family:'Playfair Display',serif; font-size:5rem; font-weight:700; color:rgba(201,150,58,.15); line-height:1; min-width:80px; }
+  .mindset-header-text {}
+  .mindset-tag { font-size:.6rem; letter-spacing:.28em; color:var(--gold); text-transform:uppercase; display:block; margin-bottom:10px; }
+  .mindset-title { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.8rem,4vw,2.5rem); font-weight:600; color:var(--white); line-height:1.2; margin-bottom:6px; }
+  .mindset-title-sub { font-size:.72rem; letter-spacing:.2em; color:var(--gold-pale); text-transform:uppercase; }
 
-  /* ── SECTION INTRO ── */
-  .section-intro {
-    background: var(--dark);
-    padding: 60px 40px;
-    text-align: center;
-    border-top: 1px solid rgba(201,150,58,0.15);
-    border-bottom: 1px solid rgba(201,150,58,0.15);
-  }
-  .section-intro p {
-    max-width: 680px;
-    margin: 0 auto;
-    font-size: 1rem;
-    color: var(--text-light);
-    line-height: 1.9;
-  }
-  .section-intro p em {
-    color: var(--gold-pale);
-    font-style: italic;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-  }
+  /* PROSE */
+  .prose { font-size:.98rem; color:var(--text-light); line-height:2.05; }
+  .prose p { margin-bottom:22px; }
+  .prose p:last-child { margin-bottom:0; }
+  .prose strong { color:var(--gold-pale); font-weight:500; }
+  .prose em { font-family:'Playfair Display',serif; font-style:italic; color:var(--gold-pale); }
 
-  /* ── MINDSET CARDS ── */
-  .mindsets-container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 70px 40px;
-  }
+  /* PULL QUOTE */
+  .pull-quote { border-left:3px solid var(--gold); padding:20px 28px; margin:32px 0; background:rgba(201,150,58,.04); }
+  .pull-quote p { font-family:'Playfair Display',serif; font-style:italic; font-size:1.08rem; color:var(--gold-pale); line-height:1.75; }
 
-  .mindset-block {
-    margin-bottom: 80px;
-    position: relative;
-  }
+  /* NLP BOX */
+  .nlp-box { background:rgba(107,45,94,.22); border:1px solid rgba(201,150,58,.25); padding:28px 30px; margin:32px 0; }
+  .nlp-box-label { font-size:.6rem; letter-spacing:.28em; color:var(--gold); text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+  .nlp-box-label::before { content:''; display:inline-block; width:18px; height:1px; background:var(--gold); }
+  .nlp-box-title { font-family:'Playfair Display',serif; font-size:1rem; color:var(--white); margin-bottom:12px; font-weight:600; }
+  .nlp-box .nlp-prose { font-size:.92rem; color:var(--text-light); line-height:1.9; }
+  .nlp-box .nlp-prose p { margin-bottom:14px; }
+  .nlp-box .nlp-prose p:last-child { margin-bottom:0; }
+  .nlp-box .nlp-prose strong { color:var(--gold-pale); font-weight:500; }
+  .nlp-box .anchor-phrase { font-family:'Playfair Display',serif; font-style:italic; font-size:.95rem; color:var(--gold-pale); border-top:1px solid rgba(201,150,58,.15); margin-top:16px; padding-top:16px; line-height:1.75; }
 
-  .mindset-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 6rem;
-    font-weight: 700;
-    color: rgba(201,150,58,0.12);
-    line-height: 1;
-    position: absolute;
-    top: -20px;
-    left: -10px;
-    user-select: none;
-    pointer-events: none;
-  }
+  /* PRACTICE */
+  .practice-box { background:rgba(18,11,16,.8); border:1px solid rgba(255,255,255,.07); padding:26px 30px; margin-top:8px; }
+  .practice-label { font-size:.6rem; letter-spacing:.26em; color:rgba(255,255,255,.35); text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+  .practice-label::before { content:'✦'; color:var(--gold); font-size:.55rem; }
+  .practice-title { font-family:'Playfair Display',serif; font-size:1rem; color:var(--white); margin-bottom:12px; font-weight:600; }
+  .practice-steps { list-style:none; padding:0; }
+  .practice-steps li { font-size:.9rem; color:var(--text-light); line-height:1.8; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.05); display:flex; gap:14px; }
+  .practice-steps li:last-child { border-bottom:none; }
+  .practice-steps li::before { content:counter(step); counter-increment:step; font-family:'Playfair Display',serif; font-size:.85rem; color:var(--gold); min-width:20px; font-weight:600; }
+  .practice-steps { counter-reset:step; }
+  .practice-steps li strong { color:var(--white); font-weight:500; }
 
-  .mindset-content {
-    padding-left: 24px;
-    border-left: 2px solid var(--gold);
-    position: relative;
-    z-index: 1;
-  }
+  /* SEPARATOR */
+  .mindset-sep { width:100%; height:1px; background:linear-gradient(90deg,var(--gold),transparent); opacity:.15; margin:0 0 100px; }
 
-  .mindset-tag {
-    display: inline-block;
-    font-size: 0.62rem;
-    letter-spacing: 0.28em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
+  /* GRAND QUOTE */
+  .grand-quote { background:linear-gradient(135deg,var(--berry-deep) 0%,var(--berry) 50%,var(--berry-deep) 100%); padding:90px 40px; text-align:center; position:relative; overflow:hidden; }
+  .grand-quote::before { content:'\201C'; font-family:'Playfair Display',serif; font-size:22rem; color:rgba(255,255,255,.025); position:absolute; top:-80px; left:10px; line-height:1; }
+  .grand-quote-text { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.3rem,3vw,2.1rem); color:var(--white); max-width:740px; margin:0 auto 28px; line-height:1.6; position:relative; z-index:1; }
+  .grand-quote-attr { font-size:.7rem; letter-spacing:.25em; color:var(--gold-pale); text-transform:uppercase; }
 
-  .mindset-title {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.25;
-    margin-bottom: 8px;
-  }
+  /* BACK TO SITE */
+  .back-section { background:var(--dark2); padding:60px 40px; text-align:center; border-top:1px solid rgba(201,150,58,.12); }
+  .back-btn { display:inline-flex; align-items:center; gap:10px; padding:15px 38px; background:transparent; border:1px solid rgba(201,150,58,.4); color:var(--gold-pale); font-family:'Montserrat',sans-serif; font-size:.72rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; text-decoration:none; transition:all .3s; }
+  .back-btn:hover { border-color:var(--gold); color:var(--gold); background:rgba(201,150,58,.06); }
+  .back-btn svg { width:14px; height:14px; fill:currentColor; opacity:.7; }
 
-  .mindset-title-sub {
-    font-size: 0.75rem;
-    letter-spacing: 0.22em;
-    color: var(--gold-pale);
-    text-transform: uppercase;
-    margin-bottom: 26px;
-  }
+  /* FOOTER */
+  footer { background:var(--dark2); border-top:1px solid rgba(255,255,255,.05); padding:28px 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  footer .brand { font-family:'Playfair Display',serif; font-size:.85rem; color:var(--gold); letter-spacing:.14em; }
+  footer .legal { font-size:.65rem; color:rgba(255,255,255,.22); letter-spacing:.1em; }
 
-  .mindset-body {
-    font-size: 0.97rem;
-    color: var(--text-light);
-    line-height: 1.95;
-    margin-bottom: 28px;
-  }
-
-  .mindset-body strong {
-    color: var(--gold-pale);
-    font-weight: 500;
-  }
-
-  /* NLP Box */
-  .nlp-box {
-    background: rgba(107,45,94,0.25);
-    border: 1px solid rgba(201,150,58,0.3);
-    border-radius: 2px;
-    padding: 22px 26px;
-    margin-bottom: 22px;
-  }
-  .nlp-box-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.28em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .nlp-box-label::before {
-    content: '';
-    display: inline-block;
-    width: 16px;
-    height: 1px;
-    background: var(--gold);
-  }
-  .nlp-box p {
-    font-size: 0.9rem;
-    color: var(--gold-pale);
-    line-height: 1.8;
-    font-style: italic;
-    font-family: 'Playfair Display', serif;
-  }
-
-  /* Practice Box */
-  .practice-box {
-    background: rgba(26,15,24,0.6);
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 20px 24px;
-    border-radius: 2px;
-  }
-  .practice-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.28em;
-    color: rgba(255,255,255,0.4);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .practice-label::before {
-    content: '✦';
-    color: var(--gold);
-    font-size: 0.55rem;
-  }
-  .practice-box p {
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.75;
-  }
-  .practice-box p strong {
-    color: var(--white);
-    font-weight: 500;
-  }
-
-  /* Mindset divider */
-  .mindset-sep {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, var(--gold), transparent);
-    opacity: 0.2;
-    margin: 0 0 80px;
-  }
-
-  /* ── QUOTE SECTION ── */
-  .quote-section {
-    background: linear-gradient(135deg, var(--berry-deep) 0%, var(--berry) 50%, var(--berry-deep) 100%);
-    padding: 80px 40px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .quote-section::before {
-    content: '\201C';
-    font-family: 'Playfair Display', serif;
-    font-size: 20rem;
-    color: rgba(255,255,255,0.03);
-    position: absolute;
-    top: -60px;
-    left: 30px;
-    line-height: 1;
-  }
-  .quote-text {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(1.3rem, 3vw, 2rem);
-    color: var(--white);
-    max-width: 700px;
-    margin: 0 auto 24px;
-    line-height: 1.55;
-    position: relative;
-    z-index: 1;
-  }
-  .quote-attr {
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    color: var(--gold-pale);
-    text-transform: uppercase;
-  }
-
-  /* ── CLOSING SECTION ── */
-  .closing-section {
-    background: var(--dark2);
-    padding: 80px 40px;
-    text-align: center;
-    border-top: 1px solid rgba(201,150,58,0.15);
-  }
-  .closing-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-    color: var(--white);
-    margin-bottom: 20px;
-  }
-  .closing-section h2 span {
-    color: var(--gold);
-  }
-  .closing-section p {
-    max-width: 580px;
-    margin: 0 auto 40px;
-    font-size: 0.95rem;
-    color: var(--text-light);
-    line-height: 1.9;
-  }
-  .cta-btn {
-    display: inline-block;
-    padding: 16px 46px;
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-  .cta-btn:hover {
-    background: var(--gold);
-    color: var(--dark2);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--dark2);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 30px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  footer .brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.85rem;
-    color: var(--gold);
-    letter-spacing: 0.14em;
-  }
-  footer .legal {
-    font-size: 0.65rem;
-    color: rgba(255,255,255,0.25);
-    letter-spacing: 0.1em;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    .site-header { padding: 16px 24px; }
-    .hero { padding: 60px 24px 60px; }
-    .mindsets-container { padding: 50px 24px; }
-    .quote-section { padding: 60px 24px; }
-    .closing-section { padding: 60px 24px; }
-    footer { padding: 24px; }
-    .mindset-number { font-size: 4rem; top: -10px; left: -5px; }
-    .section-intro { padding: 50px 24px; }
+  @media(max-width:600px){
+    .site-header,.hero,.section-intro,.mindsets-container,.grand-quote,.back-section,footer{padding-left:24px;padding-right:24px;}
+    .hero{padding-top:70px;padding-bottom:70px;}
+    .mindset-header{flex-direction:column;gap:10px;}
+    .mindset-num-big{font-size:3rem;}
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
   <span class="brand">Victoria Fischer</span>
   <span class="pack-label">Pack 01 · Mentoría Exclusiva</span>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <p class="hero-eyebrow">Programa de Transformación · Método Socrático</p>
   <h1>Los <span>5 Mindsets</span><br>de las Grandes<br>Cerradoras</h1>
@@ -413,48 +132,68 @@
   <div class="hero-divider"></div>
   <p class="hero-intro">
     Antes de dominar cualquier técnica, existe algo más poderoso que determina tus resultados:<br>
-    <strong>lo que crees sobre ti misma, sobre la venta y sobre tu prospecto.</strong><br>
-    Estos 5 mindsets son la base sobre la que se construye toda gran cerradora.
+    <strong>lo que crees sobre ti misma, sobre la venta y sobre tu prospecto.</strong><br><br>
+    Estos 5 mindsets no son conceptos motivacionales. Son marcos mentales específicos que determinan —antes de que abras la boca— si esa conversación termina en un sí o en un "lo pienso". Este material te los entrega completos, con la psicología detrás, las técnicas de PNL que los activan, y los protocolos para internalizarlos hasta que se conviertan en quién eres.
   </p>
 </section>
 
-<!-- SECTION INTRO -->
 <div class="section-intro">
-  <p>
-    Las técnicas sin el mindset correcto son solo palabras sin energía.<br>
-    <em>"Una cerradora no vende. Lidera. Sirve. Y transforma conversaciones en decisiones."</em><br><br>
-    Lo que vas a leer aquí no es motivación superficial. Es una reprogramación profunda de los marcos mentales que determinan —antes de que abras la boca— si esa conversación termina en un sí o en un "lo pienso".
-  </p>
+  <div class="section-intro-inner">
+    <p>Existe una diferencia que separa a una vendedora de una gran cerradora, y esa diferencia no está en el script. Está en el interior. Las grandes cerradoras no ejecutan técnicas —<em>operan desde una identidad</em>. Y esa identidad está construida sobre 5 marcos mentales que procesan cada situación de ventas de una manera radicalmente diferente a la del promedio.</p>
+    <p>Una vendedora promedio escucha una objeción y piensa: <strong>"Me rechazaron."</strong> Una gran cerradora escucha la misma objeción y piensa: <strong>"Esta persona me está pidiendo que la guíe un paso más."</strong> Mismo evento. Distinto resultado. Porque el pensamiento precede a la acción, y la acción determina el cierre.</p>
+    <p>Lo que vas a leer en las próximas páginas no requiere que lo memorices. Requiere que lo integres — que lo leas, lo trabajes, lo practiques en voz alta y lo dejes sedimentar hasta que deje de ser una idea que recuerdas y se convierta en una convicción que vives.</p>
+  </div>
 </div>
 
-<!-- MINDSETS CONTAINER -->
 <div class="mindsets-container">
 
   <!-- MINDSET 01 -->
   <div class="mindset-block">
-    <div class="mindset-number">01</div>
-    <div class="mindset-content">
-      <span class="mindset-tag">Mindset 01 — Propósito</span>
-      <h2 class="mindset-title">Vender Es Servir.<br>No Cobrar.</h2>
-      <p class="mindset-title-sub">El Reencuadre Que Lo Cambia Todo</p>
+    <div class="mindset-header">
+      <div class="mindset-num-big">01</div>
+      <div class="mindset-header-text">
+        <span class="mindset-tag">Mindset 01 · Propósito</span>
+        <h2 class="mindset-title">Vender Es Servir.<br>No Cobrar.</h2>
+        <p class="mindset-title-sub">El Reencuadre que Cambia Todo lo Demás</p>
+      </div>
+    </div>
 
-      <div class="mindset-body">
-        <p>La mayoría de las cerradoras sienten una incomodidad sutil cuando llega el momento de pedir el dinero. Esa incomodidad tiene una raíz: en algún lugar, a algún nivel, creen que están <strong>quitándole algo al prospecto</strong> en lugar de dárselo.</p>
-        <br>
-        <p>Pero considera esto: si tú tienes plena certeza de que tu solución va a transformar la vida de esa persona, ¿negarte a cerrar no sería el verdadero acto de egoísmo? Cada vez que no cierras, le niegas a alguien la posibilidad de vivir el resultado que vino a buscar.</p>
-        <br>
-        <p>Las grandes cerradoras no piden dinero. <strong>Ofrecen acceso a una transformación</strong>. El precio no es el costo de algo que se va —es la inversión en algo que llega.</p>
+    <div class="prose">
+      <p>Existe una tensión que la mayoría de las cerradoras siente y pocas nombran: la incomodidad que aparece justo antes de pedir el dinero. Hay un momento —muy específico, generalmente cuando ya presentaste tu solución y es hora de avanzar al cierre— donde algo dentro de ti vacila. Ese instante de duda vale millones de pesos en ventas perdidas cada año, y su origen es siempre el mismo: en algún lugar, a un nivel que quizás ni reconoces conscientemente, hay una creencia instalada que dice que al cobrar le estás <strong>quitando algo al prospecto</strong> en lugar de dárselo.</p>
+
+      <p>Esta creencia tiene raíces culturales profundas. Muchas mujeres crecemos con la noción de que pedir dinero por nuestro trabajo es de alguna manera impúdico, agresivo o excesivo. Que presionar es malo. Que una buena profesional espera que el cliente llegue a ella —no que ella vaya al cliente. Esas ideas son el veneno silencioso del cierre femenino. Y el primer mindset las desmonta completamente.</p>
+
+      <p>La pregunta clave que te propongo es esta: si tú tienes plena certeza de que tu solución va a transformar la vida de esa persona, ¿no sería el verdadero acto de egoísmo <em>no</em> cerrar? Si lo que ofreces genuinamente funciona —y lo sabes, porque tienes resultados, tienes casos reales, tienes la evidencia— entonces cada vez que no cierras, le niegas a alguien el acceso a esa transformación. No estás protegiéndola de un gasto. Estás privándola de un resultado.</p>
+
+      <p>Las grandes cerradoras operan desde este marco de manera visceral, no solo intelectual. No piden dinero. <strong>Entregan acceso a un resultado</strong>. El precio no es el costo de algo que se va —es la inversión en algo que llega. Y cuando esa distinción deja de ser una frase que repites y se convierte en una convicción que sientes, tu energía en el cierre cambia completamente. El prospecto lo percibe antes de que digas una sola palabra.</p>
+
+      <div class="pull-quote">
+        <p>"Tu deber no es convencer. Tu deber es no dejar que una persona que necesita lo que tú tienes salga de esa conversación sin haberle dado la oportunidad de decir que sí."</p>
       </div>
 
-      <div class="nlp-box">
-        <p class="nlp-box-label">PNL Aplicada — Reencuadre de Identidad</p>
-        <p>Antes de cada llamada, instala este ancla verbal internamente: <br><br>"<em>Mi trabajo no es vender. Mi trabajo es ayudar a esta persona a tomar la mejor decisión de su vida. Si creo en lo que ofrezco —y lo creo— cerrar no es presión. Es servicio.</em>"</p>
-      </div>
+      <p>Esto no significa que cierras a toda costa. Significa que cierras con convicción en lo que ofreces. La diferencia entre presión y servicio no está en la insistencia —está en la certeza. Una cerradora que cree profundamente en lo que vende puede ser directa, firme y persistente sin que eso se sienta como presión. Porque la persona del otro lado siente la diferencia entre alguien que necesita la venta para pagar sus cuentas, y alguien que quiere que ella tenga el resultado.</p>
+    </div>
 
-      <div class="practice-box">
-        <p class="practice-label">Práctica de Integración</p>
-        <p><strong>Pregúntate antes de cada conversación:</strong> "¿Cómo cambia la vida de esta persona el día que dice que sí?" Escribe la respuesta. Siente esa respuesta. Entra a la llamada desde ese lugar.</p>
+    <div class="nlp-box">
+      <p class="nlp-box-label">PNL Aplicada — Reencuadre de Identidad</p>
+      <p class="nlp-box-title">Cómo instalar este marco antes de cada llamada</p>
+      <div class="nlp-prose">
+        <p>El reencuadre de identidad es una técnica de PNL que trabaja a nivel neurológico, no solo conceptual. No se trata de convencerte de algo que no crees — se trata de acceder a una verdad que ya está en ti pero que el ruido mental bloquea antes de cada conversación difícil.</p>
+        <p>El protocolo es el siguiente: <strong>2 minutos antes de cada llamada importante</strong>, cierra los ojos y hazte esta pregunta en voz alta o internamente: <em>"¿De qué manera concreta mejora la vida de esta persona el día que dice que sí?"</em> No la respondas en abstracto — respóndela con detalle específico. Si vendes un programa de ventas: "Va a cerrar sus primeros 3 clientes este mes. Va a dejar de sentir vergüenza cuando pide el dinero. Su negocio va a empezar a ser sostenible." Eso es real. Eso es concreto. Siéntelo.</p>
+        <p>Lo que ocurre neurológicamente es que este proceso activa el sistema límbico antes de que actives la corteza prefrontal crítica. Entras a la conversación desde el cuerpo —desde la convicción— en lugar de desde la mente analítica que monitorea cada palabra que dices y te hace dudar.</p>
+        <div class="anchor-phrase">"Mi trabajo no es vender. Mi trabajo es ayudar a esta persona a tomar la mejor decisión de su vida. Si creo en lo que ofrezco —y lo creo— cerrar no es presión. Es servicio."</div>
       </div>
+    </div>
+
+    <div class="practice-box">
+      <p class="practice-label">Protocolo de Integración</p>
+      <p class="practice-title">Ejercicio "Casos Vivos" — Para los próximos 7 días</p>
+      <ol class="practice-steps">
+        <li><strong>Escribe 3 casos reales</strong> de personas cuya vida mejoró tangiblemente gracias a lo que tú ofreces. Si recién empiezas, escribe los resultados que tú misma habrías querido tener antes de tener este conocimiento.</li>
+        <li><strong>Antes de cada llamada</strong>, lee en voz alta uno de esos 3 casos. No en silencio — en voz alta. El cuerpo necesita escucharlos tanto como la mente.</li>
+        <li><strong>Hazte la pregunta activa:</strong> "¿Cómo cambia la vida de esta persona específica si hoy dice que sí?" Escribe una respuesta nueva cada vez — no la misma respuesta memoriada.</li>
+        <li><strong>Entra a la llamada</strong> desde ese lugar. Si sientes que la convicción se va durante la conversación, recuérdate mentalmente: <em>"Estoy aquí para que ella tenga el resultado."</em></li>
+      </ol>
     </div>
   </div>
 
@@ -462,29 +201,51 @@
 
   <!-- MINDSET 02 -->
   <div class="mindset-block">
-    <div class="mindset-number">02</div>
-    <div class="mindset-content">
-      <span class="mindset-tag">Mindset 02 — Resiliencia</span>
-      <h2 class="mindset-title">El Primer NO<br>Es El Inicio.</h2>
-      <p class="mindset-title-sub">La Objeción Como Señal de Interés</p>
+    <div class="mindset-header">
+      <div class="mindset-num-big">02</div>
+      <div class="mindset-header-text">
+        <span class="mindset-tag">Mindset 02 · Resiliencia</span>
+        <h2 class="mindset-title">El Primer NO<br>Es El Inicio.</h2>
+        <p class="mindset-title-sub">La Objeción Como Señal de Interés, No de Rechazo</p>
+      </div>
+    </div>
 
-      <div class="mindset-body">
-        <p>Las cerradoras promedio escuchan "lo tengo que pensar" y sienten que la conversación terminó. Las grandes cerradoras escuchan exactamente lo mismo y piensan: <strong>"Todavía está aquí. Todavía está evaluando. Esto acaba de comenzar."</strong></p>
-        <br>
-        <p>Una persona que no tiene interés simplemente se va. Una persona que pone objeciones está, en realidad, pidiendo que le des una razón más sólida para decir que sí. Está buscando permiso para tomar la decisión que ya quiere tomar.</p>
-        <br>
-        <p>Tu trabajo no es convencer a alguien que no quiere. Tu trabajo es <strong>guiar a alguien que ya quiere pero todavía tiene miedo</strong>. El primer NO no es el final de la negociación — es el comienzo.</p>
+    <div class="prose">
+      <p>Hay una estadística que cambia la relación de cualquier cerradora con el "no": la mayoría de las ventas se cierran en el quinto intento. No en el primero, no en el segundo — el quinto. Sin embargo, el 44% de los vendedores abandona después del primer "no". El 22%, después del segundo. Eso significa que el 66% de las personas que vende nunca llega al punto donde las ventas realmente ocurren.</p>
+
+      <p>No es un problema de habilidad. Es un problema de interpretación. Cuando escuchas "lo tengo que pensar" o "no tengo el dinero" o "déjame consultarlo", ¿qué ocurre en tu interior? Si tu respuesta automática es sentir que la conversación terminó, que te rechazaron, que esa persona no quiere comprar — entonces estás interpretando la señal de forma incorrecta. Y esa interpretación incorrecta te hace abandonar exactamente cuando el trabajo real está comenzando.</p>
+
+      <p>Una persona que no tiene interés no pone objeciones. Simplemente no responde el mensaje, corta la llamada o dice un "no gracias" seco y se va. Una persona que pone objeciones está activamente procesando. Está evaluando. Está en una conversación interna con ella misma que suena a: <em>"¿Vale la pena? ¿Es para mí? ¿Me va a funcionar? ¿Puedo costear esto?"</em> Esas preguntas no son un rechazo — son una invitación a que tú las respondas mejor de lo que ella sola podría respondérselas.</p>
+
+      <div class="pull-quote">
+        <p>"El prospecto que pone una objeción te está diciendo: 'Todavía estoy aquí. Todavía no me convenciste del todo. Intentémoslo de nuevo.'"</p>
       </div>
 
-      <div class="nlp-box">
-        <p class="nlp-box-label">PNL Aplicada — Anclaje Condicional</p>
-        <p>"<em>Cada vez que escucho una objeción, mi mente traduce automáticamente: 'Esta persona necesita que yo la guíe un paso más.' La objeción no es una puerta cerrada. Es una pregunta con forma diferente.</em>"</p>
-      </div>
+      <p>Las grandes cerradoras han internalizados algo que el promedio nunca logra: <strong>el primer NO no es el final de la negociación — es el comienzo</strong>. Es el momento donde empieza el trabajo real de guiar a alguien hacia una decisión que ya quiere tomar pero que necesita ayuda para articular. Tu trabajo en ese punto no es convencer a alguien que no quiere. Es acompañar a alguien que sí quiere pero que tiene miedo, dudas o falta de claridad.</p>
 
-      <div class="practice-box">
-        <p class="practice-label">Práctica de Integración</p>
-        <p><strong>Role-play en voz alta:</strong> Escoge la objeción que más te cuesta recibir. Ensaya la respuesta con el método Empatizar + Direccionar hasta que tu voz suene segura —no defensiva. El tono lo cambia todo.</p>
+      <p>Esta distinción cambia completamente tu energía. Cuando recibes una objeción desde el marco de "me rechazaron", te pones a la defensiva y empiezas a contra-argumentar — lo cual crea fricción. Cuando la recibes desde el marco de "necesita que la guíe un paso más", te vuelves curiosa, empática y estratégica. Le preguntas qué hay detrás. Escuchas. Y desde ese lugar de genuina escucha, respondes de una manera que ella pueda recibir.</p>
+    </div>
+
+    <div class="nlp-box">
+      <p class="nlp-box-label">PNL Aplicada — Anclaje Condicional</p>
+      <p class="nlp-box-title">Reprogramar la respuesta automática al "no"</p>
+      <div class="nlp-prose">
+        <p>Un anclaje condicional en PNL es una asociación que instalamos entre un estímulo (escuchar una objeción) y una respuesta interna específica (curiosidad en lugar de defensividad). A diferencia del anclaje simple, el anclaje condicional trabaja con el contexto — "cada vez que X ocurra en ventas, mi respuesta automática será Y".</p>
+        <p>El proceso de instalación requiere repetición con emoción. Durante 5 días seguidos, antes de dormir, visualiza con detalle una conversación donde escuchas la objeción que más te cuesta recibir. Luego, de manera deliberada, cambia la etiqueta mental que le pones: <strong>en lugar de "rechazo", instala la etiqueta "negociación"</strong>. En lugar de "me está diciendo que no", instala "me está dando información que necesito para cerrar mejor".</p>
+        <p>No es positivo pensamiento. Es reprogramación de respuesta condicionada — el mismo mecanismo con el que Pavlov entrenó a sus perros, solo que aplicado a tu cerebro de manera intencional y consciente.</p>
+        <div class="anchor-phrase">"Cada vez que escucho una objeción, mi mente traduce: 'Esta persona necesita que la guíe un paso más.' El NO no es una puerta cerrada — es una pregunta con forma diferente."</div>
       </div>
+    </div>
+
+    <div class="practice-box">
+      <p class="practice-label">Protocolo de Integración</p>
+      <p class="practice-title">Role-play de Resiliencia — Protocolo Semanal</p>
+      <ol class="practice-steps">
+        <li><strong>Identifica la objeción que más te desestabiliza</strong> — la que cuando la escuchas sientes que la conversación se acabó. Escríbela tal como el prospecto la dice.</li>
+        <li><strong>Practica recibirla en voz alta</strong> con una compañera o grabándote. Primero recíbela con la reacción automática que tienes hoy — sin corrección. Después, practica recibirla desde la curiosidad: "¿Qué hay detrás de eso?"</li>
+        <li><strong>Practica la respuesta con el método E+D</strong> (Empatizar + Direccionar) hasta que tu voz suene tranquila, no defensiva ni ansiosa. El tono lo cambia todo — no solo las palabras.</li>
+        <li><strong>Grábate en audio</strong> y escúchate. La primera vez que lo haces es incómodo — pero es donde el aprendizaje ocurre. Ajusta. Repite hasta que te suenes a ti misma como alguien que tiene el control.</li>
+      </ol>
     </div>
   </div>
 
@@ -492,29 +253,49 @@
 
   <!-- MINDSET 03 -->
   <div class="mindset-block">
-    <div class="mindset-number">03</div>
-    <div class="mindset-content">
-      <span class="mindset-tag">Mindset 03 — Energía</span>
-      <h2 class="mindset-title">La Certeza Es Tu<br>Moneda Más Valiosa.</h2>
-      <p class="mindset-title-sub">Tu Seguridad Interior Determina la Decisión Exterior</p>
+    <div class="mindset-header">
+      <div class="mindset-num-big">03</div>
+      <div class="mindset-header-text">
+        <span class="mindset-tag">Mindset 03 · Energía</span>
+        <h2 class="mindset-title">La Certeza Es Tu<br>Moneda Más Valiosa.</h2>
+        <p class="mindset-title-sub">Tu Estado Interior Se Transmite Antes de que Digas una Sola Palabra</p>
+      </div>
+    </div>
 
-      <div class="mindset-body">
-        <p>Antes de que tu prospecto evalúe tu propuesta, evalúa algo mucho más profundo: <strong>¿esta persona cree en lo que ofrece?</strong> El sistema nervioso detecta la vacilación antes que el cerebro racional la pueda nombrar.</p>
-        <br>
-        <p>La certeza no es arrogancia. Es la convicción tranquila de que lo que llevas a esa conversación tiene el poder genuino de cambiar vidas. Y esa convicción se transmite —silenciosamente, pero sin error— en tu tono, en tu pausa, en cómo respondes cuando aparece la primera objeción.</p>
-        <br>
-        <p>Trabaja tu certeza como músculo. Conoce tu producto en profundidad. Ten casos reales. Siente el antes y el después de tus clientes. <strong>Una cerradora segura no defiende su precio. Lo sostiene.</strong></p>
+    <div class="prose">
+      <p>Antes de que tu prospecto evalúe tu propuesta, evalúa algo mucho más profundo y primitivo: ¿esta persona cree en lo que ofrece? El sistema nervioso autónomo humano detecta la vacilación antes de que el cerebro racional pueda nombrarla. No es místico — es neurociencia. Las neuronas espejo en el cerebro del prospecto escanean constantemente tu tono, tu micro-expresión, tu velocidad al hablar, la firmeza con que sostienes el precio cuando aparece la resistencia. Todo eso comunica, antes de que tus palabras lleguen, si eres alguien que cree en lo que ofrece o alguien que espera que le crean.</p>
+
+      <p>La certeza no es arrogancia. No es fingir que no tienes dudas. Es la convicción tranquila —serena, no gritada— de que lo que llevas a esa conversación tiene el poder genuino de cambiar vidas. Y esa convicción se construye. No aparece sola. Se construye conociendo tu producto en profundidad hasta que puedes hablar de él durante horas sin preparación. Se construye teniendo casos reales, historias específicas de personas que cambiaron gracias a lo que tú ofreces. Se construye conociéndote a ti misma lo suficiente como para saber que lo que dices es verdad.</p>
+
+      <p>Hay una diferencia muy concreta entre una cerradora que "conoce los beneficios de su producto" y una que <strong>cree en ellos con todo su ser</strong>. La primera puede recitar el pitch. La segunda puede responder cualquier pregunta, manejar cualquier objeción y sostener cualquier precio porque todo lo que dice está anclado en una convicción real. Y el prospecto la siente. No sabe nombrar exactamente qué percibe — solo sabe que esa persona <em>sabe de lo que habla</em> y que parece imposible que le esté mintiendo.</p>
+
+      <div class="pull-quote">
+        <p>"Tu prospecto no compra tu producto primero. Te compra a ti. Y te compra cuando siente, no piensa — que tú crees completamente en lo que estás ofreciendo."</p>
       </div>
 
-      <div class="nlp-box">
-        <p class="nlp-box-label">PNL Aplicada — Transferencia de Estado</p>
-        <p>"<em>Los estados emocionales se contagian. Si yo entro a esta conversación desde la certeza, le doy a mi prospecto acceso a ese mismo estado. Compran la certeza primero. La solución, después.</em>"</p>
-      </div>
+      <p>Trabaja tu certeza como músculo, no como estado de ánimo. Los estados de ánimo fluctúan. El músculo, cuando está entrenado, responde incluso en los días difíciles. La certeza muscular se construye con evidencia acumulada: testimonios, resultados, casos concretos. Cada vez que un cliente tiene un resultado gracias a ti, ese resultado se convierte en un ladrillo de certeza. Y cuando tienes suficientes ladrillos, el edificio es sólido sin importar el viento que traiga la conversación del día.</p>
+    </div>
 
-      <div class="practice-box">
-        <p class="practice-label">Práctica de Integración</p>
-        <p><strong>Antes de tu próxima llamada:</strong> Lee 3 testimonios reales de clientes tuyos. Siente el resultado que produjiste. Entra a la conversación desde ese lugar de evidencia viva —no de esperanza, sino de certeza probada.</p>
+    <div class="nlp-box">
+      <p class="nlp-box-label">PNL Aplicada — Transferencia de Estado</p>
+      <p class="nlp-box-title">El efecto contagio de los estados emocionales</p>
+      <div class="nlp-prose">
+        <p>En PNL, la transferencia de estado describe el fenómeno donde el estado emocional de una persona influye en el estado emocional de otra sin que medie comunicación verbal explícita. No es sugestión — es regulación emocional interpersonal, y ocurre constantemente en todas las conversaciones de ventas.</p>
+        <p>Si entras a una conversación desde la ansiedad, le transmites ansiedad al prospecto. Esa ansiedad activa su sistema de alarma y lo pone en modo defensivo. Si entras desde la certeza serena, le transmites calma y confianza — exactamente el estado que necesita para tomar una decisión. <strong>Tu trabajo pre-llamada no es solo revisar tu pitch. Es gestionar tu estado interno.</strong></p>
+        <p>El protocolo de estado para antes de conversaciones de cierre: a) respira profundo 3 veces antes de marcar; b) lee un testimonio real de un cliente satisfecho; c) recuerda un cierre tuyo donde te sentiste completamente en control. Ese recuerdo activa el estado neurológico asociado a esa experiencia — y lo llevas contigo a la llamada.</p>
+        <div class="anchor-phrase">"Los estados emocionales se contagian. Si yo entro desde la certeza, le ofrezco a mi prospecto acceso a ese mismo estado. Compra la certeza primero. La solución, después."</div>
       </div>
+    </div>
+
+    <div class="practice-box">
+      <p class="practice-label">Protocolo de Integración</p>
+      <p class="practice-title">Construcción del "Banco de Certeza"</p>
+      <ol class="practice-steps">
+        <li><strong>Crea un documento o carpeta llamado "Banco de Certeza"</strong> donde guardes capturas, mensajes, testimonios — todo lo que atestigua el impacto real de tu trabajo. No es un archivo de vanidad. Es tu herramienta de estado emocional.</li>
+        <li><strong>Agrega a ese banco cada resultado concreto</strong>: no "me fue bien" sino "Ana pasó de 0 a 3 cierres en su primer mes". La especificidad activa la certeza. La generalidad no.</li>
+        <li><strong>Antes de cada conversación difícil</strong>, abre ese banco y lee 3 entradas. Siente el impacto real que produjo cada una. Eso es certeza construida desde evidencia, no desde optimismo.</li>
+        <li><strong>Cuando aparezca la resistencia del prospecto</strong>, en lugar de buscar el argumento correcto, vuelve mentalmente a ese banco: <em>"Tengo evidencia real de que esto funciona. Mi trabajo es transmitirla."</em></li>
+      </ol>
     </div>
   </div>
 
@@ -522,29 +303,49 @@
 
   <!-- MINDSET 04 -->
   <div class="mindset-block">
-    <div class="mindset-number">04</div>
-    <div class="mindset-content">
-      <span class="mindset-tag">Mindset 04 — Liderazgo</span>
-      <h2 class="mindset-title">Tú Lideras<br>La Conversación. Siempre.</h2>
-      <p class="mindset-title-sub">El Marco Es Tuyo — No Lo Cedes Nunca</p>
+    <div class="mindset-header">
+      <div class="mindset-num-big">04</div>
+      <div class="mindset-header-text">
+        <span class="mindset-tag">Mindset 04 · Liderazgo</span>
+        <h2 class="mindset-title">Tú Lideras<br>La Conversación. Siempre.</h2>
+        <p class="mindset-title-sub">El Marco Es Tuyo — No Lo Cedes Bajo Ninguna Circunstancia</p>
+      </div>
+    </div>
 
-      <div class="mindset-body">
-        <p>Existe una ley invisible en cada conversación de ventas: quien hace las preguntas, conduce. Quien conduce, decide a dónde llegan. Una cerradora que cede el marco —que deja que el prospecto guíe, que espera que el prospecto pida— <strong>ha abandonado el timón antes de que empiece el viaje</strong>.</p>
-        <br>
-        <p>El Método Socrático no es una técnica de manipulación. Es una filosofía de liderazgo conversacional: haces las preguntas correctas para que el prospecto llegue —por sí mismo— a la conclusión que ya era suya desde el principio. Tú no lo convences. Lo acompañas a descubrir.</p>
-        <br>
-        <p><strong>La agenda la pones tú. Las preguntas las haces tú. La pausa la sostienes tú.</strong> No por control, sino porque eres la guía en ese momento. Y una guía que no conoce el camino pierde al viajero.</p>
+    <div class="prose">
+      <p>Hay una ley invisible en toda conversación de ventas que muy pocas cerradoras nombran explícitamente: <strong>quien hace las preguntas conduce la conversación, y quien conduce la conversación determina el destino</strong>. La cerradora que deja que el prospecto marque el ritmo, que responde pero nunca pregunta, que espera que el prospecto llegue solo al cierre — ha cedido el timón sin darse cuenta. Y una conversación sin timón generalmente termina en "lo pienso y te aviso".</p>
+
+      <p>Liderar una conversación de ventas no significa hablar más ni dominar al prospecto. Significa tener la agenda clara, avanzar por las fases del proceso con intención, y usar las preguntas como herramienta de dirección. El Método Socrático es, en esencia, una filosofía de liderazgo conversacional: haces las preguntas correctas para que el prospecto llegue —por su propio razonamiento— a la conclusión que ya era suya desde el principio. No la convences. La acompañas a descubrir.</p>
+
+      <p>Dale Carnegie lo formuló con claridad en su trabajo sobre influencia: la persona que gana discusiones es la que hace que el otro diga "sí" de manera repetida y acumulativa antes de llegar al punto de fricción. Cada pequeño "sí" construye un patrón de acuerdo. Cada pregunta que el prospecto responde afirmativamente es un ladrillo de compromiso. Cuando llegás al cierre, no hay una decisión grande que tomar — hay una continuación lógica de una serie de pequeños síes que ella misma fue construyendo.</p>
+
+      <div class="pull-quote">
+        <p>"No improvises en la estructura. Improvisa dentro de ella. Una vez que sabes exactamente en qué fase de la conversación estás y hacia cuál vas, la adaptación dentro de esa fase es natural. Lo que nunca se improvisa es el rumbo."</p>
       </div>
 
-      <div class="nlp-box">
-        <p class="nlp-box-label">PNL Aplicada — Marco de Liderazgo</p>
-        <p>"<em>Cada respuesta mía termina con una pregunta. No por protocolo — porque quiero que ella piense. Porque cuando ella llega a su propia conclusión, esa conclusión le pertenece. Y nadie abandona lo que construyó.</em>"</p>
-      </div>
+      <p>Liderar la conversación también significa sostener el silencio. Las cerradoras inseguras llenan cada pausa con más información, más argumentos, más razones para comprar. Las grandes cerradoras hacen una pregunta y guardan silencio. El silencio es parte de la conversación — es el espacio donde el prospecto procesa, evalúa y llega a sus propias conclusiones. Cortar ese silencio es cortar el proceso de decisión. <strong>El silencio pertenece al prospecto, no a ti.</strong> Tu trabajo es hacer la pregunta y esperar con comodidad a que ella llegue.</p>
+    </div>
 
-      <div class="practice-box">
-        <p class="practice-label">Práctica de Integración</p>
-        <p><strong>Mapa de conversación:</strong> Diseña el guion de una llamada de cierre con al menos 8 preguntas Socráticas en secuencia lógica. Practica hacerlas en orden sin perder el hilo. La estructura libera la fluidez.</p>
+    <div class="nlp-box">
+      <p class="nlp-box-label">PNL Aplicada — Marco de Liderazgo</p>
+      <p class="nlp-box-title">La técnica de la pregunta de cierre de turno</p>
+      <div class="nlp-prose">
+        <p>En PNL conversacional avanzada, el "marco de liderazgo" se establece mediante una regla simple pero poderosa: <strong>nunca terminas tu turno sin una pregunta</strong>. No por protocolo — porque cada pregunta transfiere el poder de procesamiento al prospecto y mantiene la dirección de la conversación en tus manos.</p>
+        <p>La estructura es: información/respuesta → puente → pregunta. Ejemplo: "Entiendo que el precio te parece alto. La mayoría de las personas que trabajan con nosotros pensaban lo mismo antes de ver el resultado en los primeros 30 días. <strong>Dime — ¿cuánto estás dejando de ganar cada mes que pasa sin resolver esto?</strong>" El prospecto responde, y tú volviste al liderazgo de la conversación sin que nadie percibiera la maniobra.</p>
+        <p>La regla de oro: si el prospecto hace más preguntas que tú, estás en modo reactivo. Eso significa que él está conduciendo. Recupera el liderazgo con una sola pregunta bien colocada.</p>
+        <div class="anchor-phrase">"Cada respuesta mía termina con una pregunta. No por protocolo — porque quiero que ella piense. Cuando ella llega a su propia conclusión, esa conclusión le pertenece. Y nadie abandona lo que construyó."</div>
       </div>
+    </div>
+
+    <div class="practice-box">
+      <p class="practice-label">Protocolo de Integración</p>
+      <p class="practice-title">Mapa de Conversación — Diseño de tu Guion Socrático</p>
+      <ol class="practice-steps">
+        <li><strong>Diseña un mapa de 10 preguntas</strong> en secuencia lógica para una llamada de cierre tuya. No es un script rígido — es una guía de dirección. Cubre: diagnóstico (2), exploración del dolor (3), visión del resultado (2), compromiso/cierre (3).</li>
+        <li><strong>Para cada pregunta, escribe la siguiente</strong> que harías si la persona responde positivamente, y la que harías si responde con resistencia. Esto te da un árbol de conversación que cubre los escenarios más comunes.</li>
+        <li><strong>Practica el mapa completo en voz alta</strong> con una compañera que juegue el rol de prospecto resistente. Que te ponga objeciones reales en medio de las preguntas. El objetivo es que puedas mantener el liderazgo de la conversación sin perder el hilo.</li>
+        <li><strong>Después de cada llamada real</strong>, analiza: ¿en qué momento cedí el liderazgo? ¿Qué pregunta me recuperaría en ese punto? Construye tu mapa con datos reales de tus propias conversaciones.</li>
+      </ol>
     </div>
   </div>
 
@@ -552,50 +353,68 @@
 
   <!-- MINDSET 05 -->
   <div class="mindset-block">
-    <div class="mindset-number">05</div>
-    <div class="mindset-content">
-      <span class="mindset-tag">Mindset 05 — Maestría</span>
-      <h2 class="mindset-title">Las Grandes Cerradoras<br>Se Construyen.</h2>
-      <p class="mindset-title-sub">La Excelencia Es un Sistema, No un Don</p>
+    <div class="mindset-header">
+      <div class="mindset-num-big">05</div>
+      <div class="mindset-header-text">
+        <span class="mindset-tag">Mindset 05 · Maestría</span>
+        <h2 class="mindset-title">Las Grandes Cerradoras<br>Se Construyen.</h2>
+        <p class="mindset-title-sub">La Excelencia No Es un Don — Es un Sistema de Práctica Deliberada</p>
+      </div>
+    </div>
 
-      <div class="mindset-body">
-        <p>El talento da ventaja en el primer mes. El sistema determina quién sigue ganando en el tercer año. Las grandes cerradoras no son "naturalmente buenas en ventas". Son buenas porque <strong>practicaron cuando nadie las estaba viendo, y siguieron practicando cuando ya todos las estaban viendo</strong>.</p>
-        <br>
-        <p>Cada objeción que no sabías responder ayer y hoy sí sabes, es una nueva herramienta que nadie puede quitarte. Cada llamada difícil que hiciste de todos modos construyó el músculo que va a sostenerte cuando llegue la conversación más importante de tu carrera.</p>
-        <br>
-        <p>La habilidad de cerrar no se aprende en un libro —se encarna en la práctica deliberada. <strong>Cuando no estás vendiendo, estás entrenando.</strong> Ese es el estándar de las grandes.</p>
+    <div class="prose">
+      <p>El talento natural en ventas existe. Hay personas que tienen una facilidad instintiva para el rapport, para leer a la gente, para encontrar las palabras. Pero el talento da ventaja en el primer mes. Después de eso, lo que determina quién sigue creciendo y quién se estanca es algo completamente diferente: el sistema de práctica deliberada.</p>
+
+      <p>La práctica deliberada no es lo mismo que trabajar mucho. Es la práctica enfocada en el punto de quiebre específico — la parte de la conversación donde todavía fallas, el tipo de objeción que todavía te desestabiliza, la transición al cierre que todavía te cuesta hacer sin vacilación. La cerradora promedio hace muchas llamadas. La gran cerradora hace muchas llamadas <em>y además</em> dedica tiempo deliberado a analizar dónde falló y a practicar eso específico hasta que deja de fallar.</p>
+
+      <p>Grant Cardone tiene una expresión que resume este mindset perfectamente: "Cuando no estás vendiendo, debes estar entrenando." No como disciplina punitiva — como mentalidad atlética. Un deportista de élite no solo compite. Entrena. Analiza el juego. Trabaja los puntos débiles con su entrenador. Vuelve al campo con algo mejorado. La habilidad de cerrar funciona exactamente igual: es un músculo que se desarrolla con repetición intencional, no solo con exposición.</p>
+
+      <div class="pull-quote">
+        <p>"Cada objeción que no sabías responder ayer y hoy sí sabes, es una herramienta nueva que nadie puede quitarte. La maestría se construye en las conversaciones que perdiste y estudiaste."</p>
       </div>
 
-      <div class="nlp-box">
-        <p class="nlp-box-label">PNL Aplicada — Identidad de Cierre</p>
-        <p>"<em>No soy alguien que 'intenta' cerrar. Soy una cerradora que practica. Esa distinción lo cambia todo. El talento se desgasta. La maestría se profundiza.</em>"</p>
-      </div>
+      <p>Este mindset también cambia la relación con el fracaso. Una cerradora que no ha internalizado el mindset 05 siente cada venta perdida como un golpe personal. Una que sí lo tiene, siente cada venta perdida como <em>información</em>. "¿En qué momento de la conversación se fue? ¿Qué pregunta faltó? ¿Qué objeción no respondí bien? ¿Cuándo perdí el liderazgo de la conversación?" Esas preguntas convierten el fracaso en dato. Y el dato, trabajado sistemáticamente, construye la maestría.</p>
 
-      <div class="practice-box">
-        <p class="practice-label">Práctica de Integración</p>
-        <p><strong>Protocolo semanal:</strong> Elige una objeción cada semana. Practica sus 3 respuestas en voz alta durante 7 días. Grábate. Escúchate. Ajusta el tono. Al cabo de 10 semanas, tendrás 10 objeciones internalizadas —no memorizadas. Internalizadas.</p>
+      <p>Las grandes cerradoras no nacen sabiendo cerrar. Aprenden, fallan, analizan, practican y vuelven. Una y otra vez. Hasta que el proceso que alguna vez fue consciente y torpe se vuelve fluido e instintivo. Hasta que las respuestas a las objeciones salen solas porque están tan internalizadas que el cerebro ya no necesita buscarlas. <strong>Ese es el nivel donde el cierre deja de sentirse como trabajo y empieza a sentirse como quién eres.</strong></p>
+    </div>
+
+    <div class="nlp-box">
+      <p class="nlp-box-label">PNL Aplicada — Identidad de Cierre</p>
+      <p class="nlp-box-title">La diferencia entre "intentar cerrar" y "ser una cerradora"</p>
+      <div class="nlp-prose">
+        <p>En los modelos de aprendizaje de la PNL, existe una distinción crítica entre los niveles neurológicos: el nivel de <strong>comportamiento</strong> ("hago cosas de ventas") y el nivel de <strong>identidad</strong> ("soy una cerradora"). El cambio en el nivel de identidad produce un cambio automático y sostenido en todos los comportamientos que de ella derivan.</p>
+        <p>Una persona que se define a sí misma como "alguien que intenta cerrar" tiene una relación fundamentalmente diferente con el fracaso, con la práctica y con la persistencia que alguien que se define como "una cerradora que practica". El primero siente que cada falla lo saca del juego. El segundo la ve como parte del juego.</p>
+        <p>La instalación de identidad en PNL ocurre a través de declaraciones en presente sostenidas en el tiempo, especialmente en estados de alta activación emocional. No en el estado neutro de tu escritorio — en el estado activo de después de una buena llamada, de un cierre real, de un resultado concreto.</p>
+        <div class="anchor-phrase">"No soy alguien que 'intenta' cerrar. Soy una cerradora que practica. Esa distinción lo cambia todo: el talento se desgasta. La maestría se profundiza. Y la maestría es mía."</div>
       </div>
+    </div>
+
+    <div class="practice-box">
+      <p class="practice-label">Protocolo de Integración</p>
+      <p class="practice-title">Sistema de Práctica Deliberada — Ciclo de 10 Semanas</p>
+      <ol class="practice-steps">
+        <li><strong>Semanas 1-2 · Inventario de debilidades:</strong> Identifica las 3 situaciones específicas de tus conversaciones donde consistentemente pierdes el control, dudas o no sabes qué decir. Sé muy específica — no "me cuesta el cierre" sino "cuando dicen 'está caro' me quedo sin respuesta natural".</li>
+        <li><strong>Semanas 3-7 · Una objeción por semana:</strong> Elige una situación cada semana. Aprende las 3 respuestas de este manual para esa situación. Practica cada una en voz alta durante 7 días — no memorizadas, sino internalizadas hasta que fluyen.</li>
+        <li><strong>Semanas 8-9 · Integración en llamadas reales:</strong> Lleva las respuestas practicadas a tus conversaciones reales. Después de cada llamada, anota qué funcionó y qué necesita ajuste. Ajusta el lenguaje a tu voz, no al script.</li>
+        <li><strong>Semana 10 · Análisis y siguiente ciclo:</strong> Revisa las 10 situaciones trabajadas. ¿Cuáles ya son instintivas? ¿Cuáles necesitan otro ciclo? Empieza el siguiente ciclo con los puntos que aún no son automáticos.</li>
+      </ol>
     </div>
   </div>
 
-</div><!-- /mindsets-container -->
+</div>
 
-<!-- QUOTE SECTION -->
-<section class="quote-section">
-  <p class="quote-text">"La venta ocurre cuando el prospecto ya está convencido. El cierre solo formaliza una decisión que tú, con cada pregunta, con cada respuesta, ya habías construido."</p>
-  <p class="quote-attr">— Método Victoria Fischer</p>
+<section class="grand-quote">
+  <p class="grand-quote-text">"La venta ocurre cuando el prospecto ya está convencido. El cierre solo formaliza una decisión que tú, con cada pregunta, con cada respuesta, con cada momento de certeza sostenida, ya habías construido."</p>
+  <p class="grand-quote-attr">— Método Victoria Fischer</p>
 </section>
 
-<!-- CLOSING SECTION -->
-<section class="closing-section">
-  <h2>El siguiente paso es la <span>práctica</span>.</h2>
-  <p>
-    Los mindsets sin acción son solo ideas elegantes. Vuelve a este material antes de cada llamada importante. Con el tiempo, dejarán de ser conceptos que recuerdas y se convertirán en quién eres.
-  </p>
-  <a href="https://victoriafischer.com" class="cta-btn">Explorar el Método Completo</a>
-</section>
+<div class="back-section">
+  <a href="https://victoria-fischer.vercel.app" class="back-btn">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Volver a Victoria Fischer
+  </a>
+</div>
 
-<!-- FOOTER -->
 <footer>
   <span class="brand">Victoria Fischer</span>
   <span class="legal">Material exclusivo para clientes · Uso personal · No distribuir</span>

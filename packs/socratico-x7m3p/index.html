@@ -7,542 +7,491 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --berry: #6B2D5E;
-    --berry-deep: #4A1F42;
-    --gold: #C9963A;
-    --gold-pale: #F2E0C0;
-    --dark: #1A0F18;
-    --dark2: #120B10;
-    --white: #FFFFFF;
-    --text-light: rgba(255,255,255,0.85);
-    --text-muted: rgba(255,255,255,0.55);
+    --berry:#6B2D5E; --berry-deep:#4A1F42; --gold:#C9963A; --gold-pale:#F2E0C0;
+    --dark:#1A0F18; --dark2:#120B10; --white:#FFFFFF;
+    --text-light:rgba(255,255,255,0.87); --text-muted:rgba(255,255,255,0.5);
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body {
-    background: var(--dark2);
-    color: var(--white);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    line-height: 1.8;
-    overflow-x: hidden;
-  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--dark2);color:var(--white);font-family:'Montserrat',sans-serif;font-weight:300;line-height:1.9;overflow-x:hidden;}
 
-  /* HEADER */
-  .site-header {
-    background: var(--dark2);
-    border-bottom: 1px solid rgba(201,150,58,0.2);
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .site-header .brand { font-family:'Playfair Display',serif; font-size:1rem; letter-spacing:.18em; color:var(--gold); text-transform:uppercase; }
-  .site-header .pack-label { font-size:.68rem; letter-spacing:.22em; color:var(--text-muted); text-transform:uppercase; }
+  .site-header{background:var(--dark2);border-bottom:1px solid rgba(201,150,58,.2);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .site-header .brand{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;}
+  .site-header .pack-label{font-size:.68rem;letter-spacing:.22em;color:var(--text-muted);text-transform:uppercase;}
 
-  /* HERO */
-  .hero {
-    background: linear-gradient(160deg, var(--dark2) 0%, var(--berry-deep) 55%, var(--dark2) 100%);
-    padding: 90px 40px 80px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content:'';
-    position:absolute; top:0; left:0; right:0; bottom:0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(201,150,58,0.07) 0%, transparent 65%);
-    pointer-events:none;
-  }
-  .hero-eyebrow { font-size:.68rem; letter-spacing:.3em; color:var(--gold); text-transform:uppercase; margin-bottom:24px; }
-  .hero h1 { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(2rem,5vw,3.6rem); font-weight:600; color:var(--white); line-height:1.2; margin-bottom:12px; }
-  .hero h1 span { color:var(--gold); }
-  .hero-subtitle { font-size:.88rem; letter-spacing:.14em; color:var(--gold-pale); text-transform:uppercase; margin-bottom:30px; }
-  .hero-divider { width:60px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:0 auto 36px; }
-  .hero-intro { max-width:660px; margin:0 auto; font-size:1.03rem; color:var(--text-light); line-height:1.9; }
-  .hero-intro strong { color:var(--gold-pale); font-weight:500; }
+  .hero{background:linear-gradient(160deg,var(--dark2) 0%,var(--berry-deep) 55%,var(--dark2) 100%);padding:100px 40px 90px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,150,58,.07) 0%,transparent 65%);pointer-events:none;}
+  .hero-eyebrow{font-size:.68rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;}
+  .hero h1{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(2rem,5vw,3.6rem);font-weight:600;color:var(--white);line-height:1.2;margin-bottom:14px;}
+  .hero h1 span{color:var(--gold);}
+  .hero-subtitle{font-size:.88rem;letter-spacing:.14em;color:var(--gold-pale);text-transform:uppercase;margin-bottom:32px;}
+  .hero-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 40px;}
+  .hero-intro{max-width:700px;margin:0 auto;font-size:1.03rem;color:var(--text-light);line-height:1.95;}
+  .hero-intro strong{color:var(--gold-pale);font-weight:500;}
 
-  /* NAV INDEX */
-  .nav-index {
-    background: var(--dark);
-    border-top:1px solid rgba(201,150,58,0.1);
-    border-bottom:1px solid rgba(201,150,58,0.1);
-    padding: 40px;
-  }
-  .nav-index-inner { max-width:860px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
-  .nav-item {
-    display:flex; align-items:center; gap:12px;
-    padding:14px 18px;
-    border:1px solid rgba(201,150,58,0.15);
-    background:rgba(107,45,94,0.1);
-    text-decoration:none;
-    transition:all .25s;
-    cursor:pointer;
-  }
-  .nav-item:hover { border-color:var(--gold); background:rgba(107,45,94,0.25); }
-  .nav-item-num { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--gold); font-weight:600; min-width:24px; }
-  .nav-item-text { font-size:.72rem; letter-spacing:.1em; color:var(--text-light); text-transform:uppercase; line-height:1.4; }
+  /* NAV */
+  .nav-index{background:var(--dark);border-top:1px solid rgba(201,150,58,.1);border-bottom:1px solid rgba(201,150,58,.1);padding:40px;}
+  .nav-index-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+  .nav-item{display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid rgba(201,150,58,.15);background:rgba(107,45,94,.1);text-decoration:none;transition:all .25s;cursor:pointer;}
+  .nav-item:hover{border-color:var(--gold);background:rgba(107,45,94,.25);}
+  .nav-item-num{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);font-weight:600;min-width:24px;}
+  .nav-item-text{font-size:.72rem;letter-spacing:.1em;color:var(--text-light);text-transform:uppercase;line-height:1.4;}
 
-  /* MAIN CONTENT */
-  .content-wrap { max-width:860px; margin:0 auto; padding:70px 40px; }
+  /* CONTENT */
+  .content-wrap{max-width:880px;margin:0 auto;padding:80px 40px;}
 
-  /* MODULE */
-  .module { margin-bottom:80px; }
-  .module-header {
-    display:flex; align-items:flex-start; gap:20px;
-    padding-bottom:24px;
-    border-bottom:1px solid rgba(201,150,58,0.2);
-    margin-bottom:36px;
-  }
-  .module-num {
-    font-family:'Playfair Display',serif;
-    font-size:3.5rem; font-weight:700;
-    color:rgba(201,150,58,0.2);
-    line-height:1;
-    min-width:70px;
-  }
-  .module-title-wrap {}
-  .module-tag { font-size:.6rem; letter-spacing:.28em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; display:block; }
-  .module-title { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:600; color:var(--white); line-height:1.25; }
-  .module-body { font-size:.97rem; color:var(--text-light); line-height:1.95; }
-  .module-body p { margin-bottom:18px; }
-  .module-body p:last-child { margin-bottom:0; }
-  .module-body strong { color:var(--gold-pale); font-weight:500; }
-  .module-body em { font-style:italic; color:var(--gold-pale); font-family:'Playfair Display',serif; }
+  .module{margin-bottom:90px;}
+  .module-header{display:flex;align-items:flex-start;gap:24px;padding-bottom:28px;border-bottom:1px solid rgba(201,150,58,.18);margin-bottom:40px;}
+  .module-num{font-family:'Playfair Display',serif;font-size:4rem;font-weight:700;color:rgba(201,150,58,.15);line-height:1;min-width:80px;}
+  .module-tag{font-size:.6rem;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:10px;}
+  .module-title{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:600;color:var(--white);line-height:1.25;}
 
-  /* CALLOUT BOX */
-  .callout {
-    background: rgba(107,45,94,0.22);
-    border-left:3px solid var(--gold);
-    padding:22px 26px;
-    margin:28px 0;
-    border-radius:0 2px 2px 0;
-  }
-  .callout-label { font-size:.6rem; letter-spacing:.26em; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
-  .callout p { font-size:.93rem; color:var(--gold-pale); line-height:1.8; font-family:'Playfair Display',serif; font-style:italic; }
+  .prose{font-size:.98rem;color:var(--text-light);line-height:2.05;}
+  .prose p{margin-bottom:22px;}
+  .prose p:last-child{margin-bottom:0;}
+  .prose strong{color:var(--gold-pale);font-weight:500;}
+  .prose em{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-pale);}
 
-  /* QUESTION GRID */
-  .q-category { margin-bottom:40px; }
-  .q-cat-title {
-    font-size:.68rem; letter-spacing:.26em; color:var(--gold); text-transform:uppercase;
-    border-bottom:1px solid rgba(201,150,58,0.2);
-    padding-bottom:10px; margin-bottom:20px;
-    display:flex; align-items:center; gap:10px;
-  }
-  .q-cat-title span { color:rgba(201,150,58,.35); font-size:1.1rem; font-family:'Playfair Display',serif; }
-  .q-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; }
-  .q-card {
-    background:rgba(26,15,24,0.7);
-    border:1px solid rgba(255,255,255,0.06);
-    padding:16px 20px;
-    position:relative;
-    transition:border-color .25s;
-  }
-  .q-card:hover { border-color:rgba(201,150,58,0.3); }
-  .q-card::before {
-    content:'\201C';
-    font-family:'Playfair Display',serif;
-    font-size:2.5rem;
-    color:rgba(201,150,58,0.12);
-    position:absolute;
-    top:4px; left:10px;
-    line-height:1;
-  }
-  .q-card p { font-size:.88rem; color:var(--text-light); line-height:1.7; padding-left:20px; font-style:italic; font-family:'Playfair Display',serif; }
-  .q-card .q-type { font-size:.58rem; letter-spacing:.22em; color:rgba(201,150,58,.55); text-transform:uppercase; margin-top:10px; padding-left:20px; font-family:'Montserrat',sans-serif; font-style:normal; }
+  .pull-quote{border-left:3px solid var(--gold);padding:20px 28px;margin:32px 0;background:rgba(201,150,58,.04);}
+  .pull-quote p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--gold-pale);line-height:1.75;}
 
-  /* 5-PHASE PROCESS */
-  .process-steps { display:flex; flex-direction:column; gap:0; position:relative; margin:36px 0; }
-  .process-steps::before {
-    content:'';
-    position:absolute; left:22px; top:0; bottom:0;
-    width:1px;
-    background:linear-gradient(180deg,var(--gold),rgba(201,150,58,0.1));
-  }
-  .process-step { display:flex; gap:24px; padding:24px 0; position:relative; }
-  .step-dot {
-    width:44px; height:44px; min-width:44px;
-    background:var(--dark2);
-    border:1px solid var(--gold);
-    display:flex; align-items:center; justify-content:center;
-    position:relative; z-index:1;
-  }
-  .step-dot span { font-family:'Playfair Display',serif; font-size:.9rem; color:var(--gold); font-weight:600; }
-  .step-content {}
-  .step-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:600; color:var(--white); margin-bottom:4px; }
-  .step-desc { font-size:.87rem; color:var(--text-light); line-height:1.75; }
-  .step-q { font-size:.82rem; color:var(--gold-pale); font-style:italic; font-family:'Playfair Display',serif; margin-top:8px; border-left:2px solid rgba(201,150,58,0.3); padding-left:12px; }
+  .callout{background:rgba(107,45,94,.2);border:1px solid rgba(201,150,58,.22);padding:26px 30px;margin:30px 0;}
+  .callout-label{font-size:.6rem;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+  .callout p{font-size:.93rem;color:var(--text-light);line-height:1.9;}
+  .callout p strong{color:var(--gold-pale);font-weight:500;}
+  .callout p em{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-pale);}
 
-  /* NLP FRAMEWORK */
-  .nlp-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin-top:28px; }
-  .nlp-card {
-    background:rgba(107,45,94,0.15);
-    border:1px solid rgba(107,45,94,0.4);
-    padding:22px;
-  }
-  .nlp-card-num { font-family:'Playfair Display',serif; font-size:1.8rem; color:rgba(201,150,58,.25); font-weight:700; line-height:1; margin-bottom:8px; }
-  .nlp-card-name { font-size:.68rem; letter-spacing:.2em; color:var(--gold); text-transform:uppercase; margin-bottom:12px; }
-  .nlp-card-desc { font-size:.87rem; color:var(--text-light); line-height:1.75; }
-  .nlp-card-example { font-size:.82rem; color:var(--gold-pale); font-style:italic; font-family:'Playfair Display',serif; margin-top:10px; border-top:1px solid rgba(255,255,255,0.06); padding-top:10px; }
+  /* PHASE STEPS */
+  .phases{display:flex;flex-direction:column;gap:0;position:relative;margin:36px 0;}
+  .phases::before{content:'';position:absolute;left:22px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--gold),rgba(201,150,58,.1));}
+  .phase{display:flex;gap:28px;padding:28px 0;position:relative;}
+  .phase-dot{width:44px;height:44px;min-width:44px;background:var(--dark2);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+  .phase-dot span{font-family:'Playfair Display',serif;font-size:.9rem;color:var(--gold);font-weight:600;}
+  .phase-body{}
+  .phase-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--white);margin-bottom:6px;}
+  .phase-objective{font-size:.7rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+  .phase-desc{font-size:.93rem;color:var(--text-light);line-height:1.9;margin-bottom:16px;}
+  .phase-desc strong{color:var(--gold-pale);font-weight:500;}
+  .phase-script{background:rgba(18,11,16,.8);border-left:2px solid rgba(201,150,58,.35);padding:16px 20px;margin-top:4px;}
+  .phase-script-label{font-size:.58rem;letter-spacing:.22em;color:rgba(201,150,58,.6);text-transform:uppercase;margin-bottom:8px;}
+  .phase-script p{font-family:'Playfair Display',serif;font-style:italic;font-size:.9rem;color:var(--gold-pale);line-height:1.8;}
 
-  /* QUOTE STRIP */
-  .quote-strip {
-    background:linear-gradient(135deg,var(--berry-deep) 0%,var(--berry) 50%,var(--berry-deep) 100%);
-    padding:70px 40px;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-  }
-  .quote-strip::before { content:'\201C'; font-family:'Playfair Display',serif; font-size:18rem; color:rgba(255,255,255,0.03); position:absolute; top:-50px; left:20px; line-height:1; }
-  .quote-text { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.2rem,3vw,1.9rem); color:var(--white); max-width:700px; margin:0 auto 20px; line-height:1.55; position:relative; z-index:1; }
-  .quote-attr { font-size:.7rem; letter-spacing:.25em; color:var(--gold-pale); text-transform:uppercase; }
+  /* NLP GRID */
+  .nlp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:32px;}
+  .nlp-card{background:rgba(107,45,94,.15);border:1px solid rgba(107,45,94,.4);padding:26px;}
+  .nlp-card-num{font-family:'Playfair Display',serif;font-size:1.8rem;color:rgba(201,150,58,.2);font-weight:700;line-height:1;margin-bottom:8px;}
+  .nlp-card-name{font-size:.68rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+  .nlp-card-desc{font-size:.9rem;color:var(--text-light);line-height:1.85;margin-bottom:14px;}
+  .nlp-card-desc strong{color:var(--gold-pale);font-weight:500;}
+  .nlp-card-example{font-size:.83rem;color:var(--gold-pale);font-style:italic;font-family:'Playfair Display',serif;margin-top:12px;border-top:1px solid rgba(255,255,255,.05);padding-top:12px;line-height:1.75;}
+  .nlp-card-application{font-size:.8rem;color:var(--text-muted);margin-top:10px;line-height:1.7;}
+  .nlp-card-application strong{color:rgba(255,255,255,.65);font-weight:500;}
+
+  /* QUESTION SECTION */
+  .q-category{margin-bottom:44px;}
+  .q-cat-title{font-size:.68rem;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;border-bottom:1px solid rgba(201,150,58,.2);padding-bottom:10px;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+  .q-cat-title span{color:rgba(201,150,58,.3);font-size:1.1rem;font-family:'Playfair Display',serif;}
+  .q-cat-intro{font-size:.9rem;color:var(--text-light);line-height:1.85;margin-bottom:20px;}
+  .q-cat-intro strong{color:var(--gold-pale);font-weight:500;}
+  .q-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;}
+  .q-card{background:rgba(26,15,24,.7);border:1px solid rgba(255,255,255,.06);padding:18px 22px;position:relative;transition:border-color .25s;}
+  .q-card:hover{border-color:rgba(201,150,58,.3);}
+  .q-card::before{content:'\201C';font-family:'Playfair Display',serif;font-size:2.5rem;color:rgba(201,150,58,.1);position:absolute;top:4px;left:10px;line-height:1;}
+  .q-card p{font-size:.9rem;color:var(--text-light);line-height:1.75;padding-left:22px;font-style:italic;font-family:'Playfair Display',serif;}
+  .q-card .q-when{font-size:.72rem;color:var(--text-muted);padding-left:22px;margin-top:10px;font-family:'Montserrat',sans-serif;font-style:normal;line-height:1.6;}
+  .q-card .q-when strong{color:rgba(255,255,255,.55);font-weight:500;}
 
   /* CLOSING */
-  .closing-section {
-    background:var(--dark2);
-    padding:80px 40px;
-    text-align:center;
-    border-top:1px solid rgba(201,150,58,0.15);
-  }
-  .closing-section h2 { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.4rem,3.5vw,2rem); color:var(--white); margin-bottom:18px; }
-  .closing-section h2 span { color:var(--gold); }
-  .closing-section p { max-width:560px; margin:0 auto 36px; font-size:.95rem; color:var(--text-light); line-height:1.9; }
-  .cta-btn { display:inline-block; padding:16px 46px; background:transparent; border:1px solid var(--gold); color:var(--gold); font-family:'Montserrat',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; transition:all .3s; }
-  .cta-btn:hover { background:var(--gold); color:var(--dark2); }
+  .grand-quote{background:linear-gradient(135deg,var(--berry-deep) 0%,var(--berry) 50%,var(--berry-deep) 100%);padding:90px 40px;text-align:center;position:relative;overflow:hidden;}
+  .grand-quote::before{content:'\201C';font-family:'Playfair Display',serif;font-size:22rem;color:rgba(255,255,255,.025);position:absolute;top:-80px;left:10px;line-height:1;}
+  .grand-quote-text{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.3rem,3vw,2.1rem);color:var(--white);max-width:740px;margin:0 auto 28px;line-height:1.6;position:relative;z-index:1;}
+  .grand-quote-attr{font-size:.7rem;letter-spacing:.25em;color:var(--gold-pale);text-transform:uppercase;}
 
-  /* FOOTER */
-  footer { background:var(--dark2); border-top:1px solid rgba(255,255,255,.06); padding:30px 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
-  footer .brand { font-family:'Playfair Display',serif; font-size:.85rem; color:var(--gold); letter-spacing:.14em; }
-  footer .legal { font-size:.65rem; color:rgba(255,255,255,.25); letter-spacing:.1em; }
+  .back-section{background:var(--dark2);padding:60px 40px;text-align:center;border-top:1px solid rgba(201,150,58,.12);}
+  .back-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 38px;background:transparent;border:1px solid rgba(201,150,58,.4);color:var(--gold-pale);font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:all .3s;}
+  .back-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,150,58,.06);}
+  .back-btn svg{width:14px;height:14px;fill:currentColor;opacity:.7;}
 
-  /* RESPONSIVE */
-  @media (max-width:600px) {
-    .site-header, .nav-index, .content-wrap, .quote-strip, .closing-section, footer { padding-left:24px; padding-right:24px; }
-    .hero { padding:60px 24px; }
-    .module-header { flex-direction:column; gap:10px; }
-    .module-num { font-size:2.5rem; }
-    .process-steps::before { display:none; }
-    .process-step { flex-direction:column; gap:12px; }
+  footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  footer .brand{font-family:'Playfair Display',serif;font-size:.85rem;color:var(--gold);letter-spacing:.14em;}
+  footer .legal{font-size:.65rem;color:rgba(255,255,255,.22);letter-spacing:.1em;}
+
+  @media(max-width:600px){
+    .site-header,.hero,.nav-index,.content-wrap,.grand-quote,.back-section,footer{padding-left:24px;padding-right:24px;}
+    .hero{padding-top:70px;padding-bottom:70px;}
+    .module-header{flex-direction:column;gap:12px;}
+    .module-num{font-size:3rem;}
+    .phases::before{display:none;}
+    .phase{flex-direction:column;gap:12px;}
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
   <span class="brand">Victoria Fischer</span>
   <span class="pack-label">Pack 02 · Mentoría Exclusiva</span>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">Marco Teórico · Método Socrático</p>
+  <p class="hero-eyebrow">Marco Teórico · Método Socrático Aplicado a Ventas</p>
   <h1>El Arte de Vender<br><span>Preguntando.</span></h1>
-  <p class="hero-subtitle">Material Teórico del Método Socrático Aplicado a Ventas</p>
+  <p class="hero-subtitle">Material Teórico Completo — De la Filosofía al Cierre</p>
   <div class="hero-divider"></div>
   <p class="hero-intro">
     Sócrates nunca convenció a nadie directamente. Hacía preguntas hasta que la persona llegaba —sola— a la verdad que él ya conocía.<br><br>
-    <strong>Las grandes cerradoras no convencen. Guían. Y la herramienta que usan para guiar es la pregunta precisa.</strong>
+    <strong>Las grandes cerradoras no convencen. Guían. Y la herramienta que usan para guiar es la pregunta precisa, en el momento exacto, con la intención correcta.</strong><br><br>
+    Este material te entrega el marco teórico completo del método: su origen, su psicología, sus 5 fases operativas, sus 6 herramientas de PNL integradas y el arsenal de preguntas que transforma cualquier conversación de ventas en una conversación socrática que el prospecto conduce hacia su propio sí.
   </p>
 </section>
 
-<!-- NAV INDEX -->
 <nav class="nav-index">
   <div class="nav-index-inner">
-    <div class="nav-item"><span class="nav-item-num">01</span><span class="nav-item-text">Origen del Método</span></div>
-    <div class="nav-item"><span class="nav-item-num">02</span><span class="nav-item-text">Por Qué Funciona en Ventas</span></div>
-    <div class="nav-item"><span class="nav-item-num">03</span><span class="nav-item-text">Las 5 Fases Socráticas</span></div>
-    <div class="nav-item"><span class="nav-item-num">04</span><span class="nav-item-text">Las 6 Herramientas NLP</span></div>
+    <div class="nav-item"><span class="nav-item-num">01</span><span class="nav-item-text">El Origen</span></div>
+    <div class="nav-item"><span class="nav-item-num">02</span><span class="nav-item-text">La Psicología</span></div>
+    <div class="nav-item"><span class="nav-item-num">03</span><span class="nav-item-text">Las 5 Fases</span></div>
+    <div class="nav-item"><span class="nav-item-num">04</span><span class="nav-item-text">Las 6 Herramientas PNL</span></div>
     <div class="nav-item"><span class="nav-item-num">05</span><span class="nav-item-text">El Arsenal de Preguntas</span></div>
-    <div class="nav-item"><span class="nav-item-num">06</span><span class="nav-item-text">De la Pregunta al Cierre</span></div>
+    <div class="nav-item"><span class="nav-item-num">06</span><span class="nav-item-text">Del Método al Cierre</span></div>
   </div>
 </nav>
 
-<!-- MAIN CONTENT -->
 <div class="content-wrap">
 
   <!-- MODULE 01 -->
-  <div class="module" id="m1">
+  <div class="module">
     <div class="module-header">
       <div class="module-num">01</div>
-      <div class="module-title-wrap">
+      <div>
         <span class="module-tag">Fundamento Filosófico</span>
-        <h2 class="module-title">El Origen del Método Socrático</h2>
+        <h2 class="module-title">El Origen del Método Socrático — y Por Qué Está Hecho Para Ventas</h2>
       </div>
     </div>
-    <div class="module-body">
-      <p>Sócrates creía que ningún conocimiento verdadero podía ser "enseñado" desde afuera. Solo podía ser <strong>descubierto desde adentro</strong>. Su método —la mayéutica— consistía en hacer preguntas que ayudaban al interlocutor a dar a luz las verdades que ya llevaba consigo.</p>
-      <p>En ventas, esto se traduce en una paradoja poderosa: <strong>la decisión más convincente es aquella que el prospecto cree haber tomado por sí solo</strong>. No porque lo hayas manipulado, sino porque lo guiaste a través de sus propias preguntas, sus propios dolores, su propia visión de lo que quiere lograr.</p>
-      <p>Dale Carnegie lo articuló con claridad: la clave para que alguien piense como tú no es convencerlo —es hacerle preguntas que lo lleven a descubrir, por su propio razonamiento, que ya pensaba como tú. <strong>Eso es el "secreto de Sócrates" aplicado a la influencia humana</strong>.</p>
+    <div class="prose">
+      <p>Sócrates vivió en el siglo V antes de Cristo en Atenas, y nunca escribió una sola línea. Todo lo que sabemos de él viene de sus alumnos, principalmente Platón. Lo que lo convirtió en uno de los filósofos más influyentes de la historia no fue lo que enseñó — fue la manera en que lo hacía. Sócrates jamás decía "te voy a enseñar la verdad". En cambio, hacía preguntas. Una detrás de otra, con paciencia infinita, hasta que el interlocutor llegaba —por su propio razonamiento— a la conclusión que Sócrates ya tenía en mente.</p>
 
-      <div class="callout">
-        <p class="callout-label">Principio Fundacional</p>
-        <p>"La persona que convence a otro de algo no gana. La persona que ayuda a otro a convencerse a sí mismo, crea un aliado que nadie puede rebatir."</p>
+      <p>A esta técnica la llamó <em>mayéutica</em> — del griego <em>maieutikós</em>, que significa "arte de hacer parir". Su madre era partera, y Sócrates usó esa metáfora conscientemente: así como la partera no crea al bebé sino que ayuda a traerlo al mundo, el filósofo no crea el conocimiento en el alumno — lo ayuda a dar a luz el que ya lleva dentro. El conocimiento más genuino es el que la persona descubre por sí misma. El conocimiento que te dan, puedes olvidarlo. El que construiste tú, lo posees.</p>
+
+      <p>Ahora aplicá esta lógica a ventas. La decisión de compra más sólida, la más resistente a las objeciones posteriores, la menos susceptible a la cancelación o el arrepentimiento — es la que la persona siente como propia. No la que le vendiste, sino la que llegó a través de una conversación donde <strong>ella articuló su propio dolor, ella describió el resultado que quiere, ella calculó el costo de no actuar</strong>. En ese punto, cuando presentas la solución, no estás vendiendo nada. Estás respondiendo a lo que ella misma acaba de describir.</p>
+
+      <div class="pull-quote">
+        <p>"La persona que convences no te pertenece — puede ser re-convencida por el siguiente vendedor. La persona que se convenció a sí misma contigo nunca abandona su propia decisión."</p>
       </div>
+
+      <p>Dale Carnegie articuló la misma intuición desde la psicología moderna. En su trabajo sobre influencia, describió "el secreto de Sócrates" como la técnica de hacer que el interlocutor diga <em>sí</em> de manera repetida y progresiva antes de llegar al punto de fricción. Cada pequeño sí construye un patrón de acuerdo. Cada pregunta respondida afirmativamente es un ladrillo de compromiso. Cuando llegás al cierre, no hay una decisión grande que tomar — hay la continuación lógica de una serie de síes que la persona construyó con sus propias palabras.</p>
+
+      <p>Esto no es manipulación. Es comunicación de alta inteligencia. La diferencia está en la intención: la manipulación usa las preguntas para llevar a alguien donde tú quieres sin importar si es bueno para ella. El método Socrático usa las preguntas para ayudar a alguien a articular lo que genuinamente necesita y quiere — y si lo que ofreces realmente responde a eso, el cierre es la consecuencia natural de la conversación.</p>
     </div>
   </div>
 
   <!-- MODULE 02 -->
-  <div class="module" id="m2">
+  <div class="module">
     <div class="module-header">
       <div class="module-num">02</div>
-      <div class="module-title-wrap">
+      <div>
         <span class="module-tag">Neurociencia Aplicada</span>
-        <h2 class="module-title">Por Qué Funciona en Ventas</h2>
+        <h2 class="module-title">La Psicología Detrás del Método — Por Qué el Cerebro Responde</h2>
       </div>
     </div>
-    <div class="module-body">
-      <p>Cuando el prospecto habla, procesa. Cuando procesa en voz alta, conecta emocionalmente con lo que dice. Cuando conecta emocionalmente, toma decisiones. <strong>La conversación Socrática activa exactamente esa cadena</strong>.</p>
-      <p>En contraste, la presentación tradicional —"te digo todo sobre mi producto y espero que te convenzas"— activa el pensamiento crítico del prospecto. Su cerebro busca razones para objetar, comparar y posponer. Es el modo "evaluación". No el modo "decisión".</p>
-      <p>Las preguntas Socráticas invierten esa dinámica. En lugar de presentar una solución, haces que el prospecto <strong>articule su propio problema en su propia voz</strong>. Eso amplifica el dolor. Eso crea urgencia real —no manufacturada. Y cuando presentas la solución, no la estás imponiendo: estás respondiendo a lo que él mismo acaba de describir.</p>
+    <div class="prose">
+      <p>Cuando el prospecto habla, su cerebro procesa. Cuando procesa en voz alta, conecta emocionalmente con lo que dice. Cuando conecta emocionalmente, genera urgencia real. Esta cadena — <strong>hablar → procesar → conectar → decidir</strong> — es el mecanismo neurológico que el método Socrático activa de manera sistemática.</p>
 
-      <div class="callout">
-        <p class="callout-label">Principio de Neurociencia Conversacional</p>
-        <p>"Una persona que articula su propio dolor en voz alta lo siente dos veces más profundo que si lo escucha de otro. Haz que ella lo diga. Tú solo escucha, asiente, y pregunta qué viene después."</p>
+      <p>El contraste con la presentación tradicional es radical. La presentación tradicional — "te cuento todo sobre mi producto y espero que te convenzas" — activa el modo de evaluación crítica del cerebro. La corteza prefrontal se enciende y busca activamente razones para objetar, comparar y posponer. Es el modo "análisis". Y en el modo análisis, las decisiones de compra raramente se toman, porque el cerebro racional tiene infinitas razones para decir "mejor esperemos".</p>
+
+      <p>Las preguntas Socráticas invierten esa dinámica. Cuando el prospecto habla de su propio dolor — cuando lo articula en su propia voz, con sus propias palabras — el sistema límbico (el cerebro emocional) se activa antes que la corteza prefrontal. <strong>El dolor articulado en voz alta se siente dos veces más profundamente que el dolor que solo se piensa</strong>. Esto no es retórica — hay investigación en neurociencia cognitiva que respalda el hecho de que la verbalización de un estado emocional lo amplifica.</p>
+
+      <div class="pull-quote">
+        <p>"Una persona que articula su propio problema en voz alta genera urgencia real — no la urgencia fabricada del vendedor que grita '¡oferta hasta el viernes!'. La urgencia que viene de adentro es la única que produce acción genuina."</p>
       </div>
 
-      <p>La ventaja adicional: cuando la decisión emerge del diálogo del propio prospecto, <strong>la resistencia a las objeciones baja drásticamente</strong>. No hay a qué resistirse —la decisión ya es suya.</p>
+      <p>Hay otro mecanismo psicológico que el método activa: la consistencia cognitiva. Una vez que una persona ha dicho en voz alta "sí, esto es un problema para mí" y "sí, quiero resolverlo" y "sí, el costo de no hacerlo es X", su cerebro tiene una tendencia natural a actuar de manera consistente con esas declaraciones. Cambiar de posición requiere que el cerebro trabaje activamente en contra de lo que acaba de decir — lo cual produce una incomodidad cognitiva conocida como <em>disonancia</em>. Las personas generalmente prefieren actuar de manera consistente antes que sentir esa disonancia.</p>
+
+      <p>Esto explica por qué las cerradoras que usan el método Socrático reportan consistentemente menores tasas de objeción post-presentación. El prospecto que llegó al cierre por su propio proceso de preguntas tiene mucho menos espacio para "pensarlo" después — porque ya lo pensó, en voz alta, durante la conversación. Las objeciones que aparecen son genuinas y específicas, no evasivas generales.</p>
     </div>
   </div>
 
   <!-- MODULE 03 -->
-  <div class="module" id="m3">
+  <div class="module">
     <div class="module-header">
       <div class="module-num">03</div>
-      <div class="module-title-wrap">
-        <span class="module-tag">El Proceso</span>
-        <h2 class="module-title">Las 5 Fases de una Conversación Socrática</h2>
+      <div>
+        <span class="module-tag">El Proceso Operativo</span>
+        <h2 class="module-title">Las 5 Fases de una Conversación Socrática de Ventas</h2>
       </div>
     </div>
-    <div class="module-body">
-      <p>Una conversación Socrática de ventas no improvisa. Tiene estructura. Cada fase tiene un objetivo específico y un tipo de pregunta que la activa. Dominar las 5 fases convierte cada llamada en un camino lógico hacia el cierre.</p>
+    <div class="prose">
+      <p>Una conversación Socrática de ventas no improvisa su estructura. Tiene 5 fases claras, cada una con un objetivo específico, un tipo de pregunta que la activa, y una señal de avance que te dice cuándo es momento de pasar a la siguiente. Dominar las 5 fases convierte cada llamada en un camino intencional hacia el cierre — no un diálogo libre que puede ir en cualquier dirección.</p>
+      <p>La clave está en que <strong>la improvisación ocurre dentro de cada fase, nunca en su secuencia</strong>. Puedes adaptar el lenguaje, el tono, el ritmo — pero las fases se respetan. Una cerradora que salta de Diagnóstico a Compromiso sin pasar por Exploración y Amplificación está pidiendo el cierre sin haber creado la urgencia que lo justifica.</p>
     </div>
 
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="step-dot"><span>01</span></div>
-        <div class="step-content">
-          <p class="step-name">Diagnóstico — ¿Dónde estás hoy?</p>
-          <p class="step-desc">Mapear la situación actual del prospecto. Sin juicio, sin prisa. El objetivo es que ella hable —y que tú escuches con precisión diagnóstica.</p>
-          <p class="step-q">"¿Cuánto tiempo llevas en este proceso?" / "¿Qué has intentado hasta ahora?"</p>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-dot"><span>01</span></div>
+        <div class="phase-body">
+          <p class="phase-name">Diagnóstico — ¿Dónde Estás Hoy?</p>
+          <p class="phase-objective">Objetivo: Mapear la situación actual. Establecer rapport. Escuchar con precisión diagnóstica.</p>
+          <div class="phase-desc">
+            <p>La primera fase no es para vender. Es para escuchar. Tu único objetivo aquí es entender la situación actual del prospecto con la misma precisión con que un médico escucha síntomas antes de diagnosticar. Las preguntas de diagnóstico son amplias, abiertas, no amenazantes. Invitan a hablar, no a evaluar.</p>
+            <p>El error más común en esta fase es empezar a presentar antes de haber escuchado lo suficiente. Las cerradoras impacientes sienten que están "perdiendo tiempo" si no están hablando de su solución. En realidad, cada respuesta del prospecto en la fase de diagnóstico es información de oro que vas a usar en las fases siguientes para conectar tu solución exactamente con lo que ella acaba de decir.</p>
+            <p><strong>Señal de avance:</strong> Tienes una imagen clara de la situación actual y el prospecto siente que fue genuinamente escuchada.</p>
+          </div>
+          <div class="phase-script">
+            <p class="phase-script-label">Preguntas de Diagnóstico</p>
+            <p>"¿Cuánto tiempo llevas trabajando en este proceso?" / "¿Qué estrategias has intentado hasta ahora para resolverlo?" / "¿Qué tan satisfecha estás hoy con tus resultados en esta área, del 1 al 10?" / "¿Cuál dirías que es el mayor obstáculo que te frena en este momento?"</p>
+          </div>
         </div>
       </div>
-      <div class="process-step">
-        <div class="step-dot"><span>02</span></div>
-        <div class="step-content">
-          <p class="step-name">Exploración — ¿Cuál es el verdadero problema?</p>
-          <p class="step-desc">Profundizar en el dolor real. Las primeras respuestas son superficiales. Las preguntas de exploración llegan a la raíz que el prospecto aún no ha nombrado en voz alta.</p>
-          <p class="step-q">"¿Y eso cómo te afecta en el día a día?" / "¿Qué consecuencia tiene eso para ti?"</p>
+
+      <div class="phase">
+        <div class="phase-dot"><span>02</span></div>
+        <div class="phase-body">
+          <p class="phase-name">Exploración — ¿Cuál Es el Dolor Real?</p>
+          <p class="phase-objective">Objetivo: Profundizar más allá de la respuesta superficial. Llegar al dolor real que aún no fue nombrado.</p>
+          <div class="phase-desc">
+            <p>Las primeras respuestas de cualquier prospecto son casi siempre superficiales. Esto no es deshonestidad — es que la mayoría de las personas no suelen articular su dolor con precisión a alguien que acaban de conocer. Las preguntas de exploración son las que van más hondo, las que generan el momento de <em>"sí, exactamente eso"</em> donde el prospecto siente que por primera vez alguien entiende realmente lo que está viviendo.</p>
+            <p>En esta fase, el silencio es tu aliado más poderoso. Después de una pregunta de exploración, espera. No llenes el silencio. El silencio le da a la persona espacio para ir más profundo, para conectar con lo que realmente le duele. Si hablas antes de que ella termine de procesar, interrumpes el proceso exacto que necesitas que ocurra.</p>
+            <p><strong>Señal de avance:</strong> El prospecto dice algo que no suele decir en conversaciones superficiales. Hay una emoción visible. El tono cambió.</p>
+          </div>
+          <div class="phase-script">
+            <p class="phase-script-label">Preguntas de Exploración</p>
+            <p>"¿Y eso cómo te afecta específicamente en el día a día?" / "¿Qué consecuencia concreta está teniendo eso para tu negocio o para ti?" / "¿Cuánto tiempo llevas con esto sin resolverse?" / "¿Hay algo más detrás de eso que todavía no me hayas contado?"</p>
+          </div>
         </div>
       </div>
-      <div class="process-step">
-        <div class="step-dot"><span>03</span></div>
-        <div class="step-content">
-          <p class="step-name">Amplificación — ¿Cuánto te cuesta no resolverlo?</p>
-          <p class="step-desc">Hacer visible el costo del statu quo. Sin urgencia fabricada —con consecuencias reales que el propio prospecto describe. Aquí es donde nace la urgencia auténtica.</p>
-          <p class="step-q">"Si esto sigue igual en 6 meses, ¿dónde estarás?" / "¿Qué estás dejando de ganar mientras no resuelves esto?"</p>
+
+      <div class="phase">
+        <div class="phase-dot"><span>03</span></div>
+        <div class="phase-body">
+          <p class="phase-name">Amplificación — ¿Cuánto Cuesta No Resolverlo?</p>
+          <p class="phase-objective">Objetivo: Hacer visible el costo real del statu quo. Crear urgencia auténtica desde las consecuencias.</p>
+          <div class="phase-desc">
+            <p>Esta es la fase más poderosa del método y la más subutilizada. La amplificación no es presión artificial — no es decir "¡si no compras hoy pierdes la oferta!". Es hacer que el prospecto calcule, en sus propias palabras, lo que le está costando no resolver esto. Tiempo. Dinero. Oportunidades perdidas. Energía mental. Relaciones afectadas. Cuando ese cálculo aparece en voz alta, la urgencia no la pusiste tú — la descubrió ella.</p>
+            <p>Las preguntas de amplificación trabajan con el tiempo como palanca: proyectan la situación actual hacia el futuro para mostrar que el costo no solo existe hoy, sino que <strong>se acumula con cada mes que pasa sin resolverse</strong>. Una persona que no tenía urgencia para actuar generalmente la encuentra cuando calcula cuánto lleva pagando el precio de la inacción.</p>
+            <p><strong>Señal de avance:</strong> El prospecto nombra un costo concreto — ya sea en dinero, tiempo, energía o bienestar. Hay incomodidad visible con el statu quo.</p>
+          </div>
+          <div class="phase-script">
+            <p class="phase-script-label">Preguntas de Amplificación</p>
+            <p>"Si esto sigue igual en 6 meses, ¿dónde estarás respecto a donde quieres estar?" / "¿Qué estás dejando de ganar cada mes que esto no está resuelto?" / "¿Cuánto tiempo llevas con esto sin avanzar — y qué te ha costado ese tiempo?" / "¿Qué pasaría si dentro de un año la situación es exactamente igual a hoy?"</p>
+          </div>
         </div>
       </div>
-      <div class="process-step">
-        <div class="step-dot"><span>04</span></div>
-        <div class="step-content">
-          <p class="step-name">Visión — ¿Cómo sería tu vida con la solución?</p>
-          <p class="step-desc">Anclar el estado deseado. El prospecto se imagina —en su propio lenguaje— cómo se vería el resultado. Eso crea deseo concreto, no abstracto. Conecta emocionalmente con el después.</p>
-          <p class="step-q">"¿Cómo sería para ti si eso ya estuviera resuelto?" / "¿Qué cambiaría en tu negocio en 90 días?"</p>
+
+      <div class="phase">
+        <div class="phase-dot"><span>04</span></div>
+        <div class="phase-body">
+          <p class="phase-name">Visión — ¿Cómo Sería tu Vida con el Resultado?</p>
+          <p class="phase-objective">Objetivo: Anclar el estado deseado en términos concretos y emocionales. Crear deseo específico, no abstracto.</p>
+          <div class="phase-desc">
+            <p>Después de amplificar el dolor, es indispensable abrir la visión del resultado. La amplificación sola crea ansiedad — que puede llevar a la parálisis en lugar de a la acción. La visión crea deseo — y el deseo más la urgencia es la combinación perfecta para la decisión.</p>
+            <p>Las preguntas de visión invitan al prospecto a imaginar y describir en su propio lenguaje cómo se vería el resultado. Cuando ella describe el "después" con sus propias palabras — cuando dice "podría cerrar consistentemente" o "dejaría de sentir vergüenza al pedir el dinero" — ese resultado ya no es tuyo. Es de ella. Y las personas persiguen con mucha más energía los resultados que sienten como suyos.</p>
+            <p><strong>Señal de avance:</strong> El prospecto habla del resultado en presente o futuro cercano, con emoción positiva visible. Cambió la energía de la llamada.</p>
+          </div>
+          <div class="phase-script">
+            <p class="phase-script-label">Preguntas de Visión</p>
+            <p>"¿Cómo sería para ti si esto ya estuviera completamente resuelto?" / "¿Qué cambiaría en tu negocio si pudieras cerrar de manera consistente?" / "Imagínate en 90 días con esto resuelto — ¿qué ves diferente?" / "¿Cuál sería el primer resultado que querrías ver, si pudiera empezar ahora?"</p>
+          </div>
         </div>
       </div>
-      <div class="process-step">
-        <div class="step-dot"><span>05</span></div>
-        <div class="step-content">
-          <p class="step-name">Compromiso — ¿Qué te impide empezar hoy?</p>
-          <p class="step-desc">Transición al cierre. No pides el dinero abruptamente —preguntas qué falta para que la decisión sea clara. Si hay objeción, es información para direccionar. Si no hay, el camino al sí ya está despejado.</p>
-          <p class="step-q">"Con todo lo que me comentaste, ¿qué necesitarías saber para tomar la decisión hoy?" / "¿Habría alguna razón por la que no empezarías?"</p>
+
+      <div class="phase">
+        <div class="phase-dot"><span>05</span></div>
+        <div class="phase-body">
+          <p class="phase-name">Compromiso — ¿Qué Te Impide Empezar Hoy?</p>
+          <p class="phase-objective">Objetivo: Transicionar al cierre. Identificar si quedan objeciones reales. Formalizar la decisión.</p>
+          <div class="phase-desc">
+            <p>La fase de compromiso es la transición natural de una conversación Socrática bien ejecutada. Si las 4 fases anteriores se hicieron correctamente, el prospecto llegó a este punto habiendo articulado su propio dolor, calculado el costo de no actuar y visualizado el resultado que quiere. En ese estado, la pregunta de compromiso no es un salto al vacío — es la respuesta lógica a todo lo que ella misma acaba de describir.</p>
+            <p>La transición al cierre no se anuncia. Se hace. No hay un momento dramático de "ahora voy a cerrar". Simplemente, después de que el prospecto describió la visión del resultado, preguntas: <em>"¿Habría alguna razón por la que no empezarías a trabajar en eso hoy?"</em>. Si aparece una objeción, es información que trabajas con el método E+D (Ver Pack 03). Si no hay objeción, el sí ya es implícito — solo falta formalizarlo.</p>
+            <p><strong>Señal de avance:</strong> El prospecto dice que sí, o pone una objeción específica que puedes resolver. Cualquiera de los dos es un avance.</p>
+          </div>
+          <div class="phase-script">
+            <p class="phase-script-label">Preguntas de Compromiso</p>
+            <p>"Con todo lo que me contaste, ¿habría alguna razón por la que no empezarías hoy?" / "¿Qué necesitarías saber para que la decisión fuera clara ahora mismo?" / "¿Preferirías empezar esta semana o la próxima?" / "¿Cuál método de pago te es más cómodo?"</p>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="callout">
       <p class="callout-label">Nota de Integración</p>
-      <p>"La improvisación ocurre dentro de cada fase, nunca en su orden. Una vez que internalizas las 5 fases, la conversación fluye naturalmente porque sabes exactamente en cuál estás —y hacia cuál vas."</p>
+      <p>La estructura de 5 fases no es una camisa de fuerza — es un mapa. En una conversación real, puedes volver a una fase anterior si sientes que el prospecto necesita más profundidad en el dolor antes de poder visualizar el resultado. Lo que no se hace es saltar fases. <strong>Cada fase construye la base para la siguiente.</strong></p>
     </div>
   </div>
 
   <!-- MODULE 04 -->
-  <div class="module" id="m4">
+  <div class="module">
     <div class="module-header">
       <div class="module-num">04</div>
-      <div class="module-title-wrap">
-        <span class="module-tag">PNL Avanzada</span>
-        <h2 class="module-title">Las 6 Herramientas de PNL Integradas al Método</h2>
+      <div>
+        <span class="module-tag">PNL Avanzada Integrada</span>
+        <h2 class="module-title">Las 6 Herramientas de PNL que Potencian Cada Fase</h2>
       </div>
     </div>
-    <div class="module-body">
-      <p>La PNL no es manipulación. Es comunicar con la mente del prospecto en el mismo lenguaje con que ella toma decisiones. Estas 6 herramientas están integradas en cada fase del proceso Socrático —no como técnicas aisladas, sino como la textura del lenguaje de cada conversación.</p>
+    <div class="prose">
+      <p>La PNL (Programación Neuro-Lingüística) no es magia ni manipulación. Es el estudio de cómo el lenguaje y el pensamiento se retroalimentan — y cómo intervenir en ese proceso de manera intencional. Estas 6 herramientas no se aplican como técnicas aisladas al final de la conversación. Están integradas en la textura del lenguaje de cada fase del método socrático desde el primer minuto.</p>
     </div>
 
     <div class="nlp-grid">
       <div class="nlp-card">
         <div class="nlp-card-num">01</div>
-        <div class="nlp-card-name">Rapport & Calibración</div>
-        <div class="nlp-card-desc">Igualar ritmo, tono y lenguaje. El prospecto compra de quien se siente comprendida. Antes de cualquier pregunta, calibras: ¿cómo está su energía hoy?</div>
-        <div class="nlp-card-example">Herramienta Socrática: Empieza con preguntas de situación. Escucha más de lo que hablas en la Fase 1.</div>
+        <div class="nlp-card-name">Rapport y Calibración</div>
+        <div class="nlp-card-desc">El rapport no es ser simpática — es crear una resonancia genuina donde el prospecto siente que está hablando con alguien que <strong>verdaderamente entiende su mundo</strong>. La calibración es el proceso de leer constantemente los señales del prospecto y ajustar tu estilo de comunicación en tiempo real.</div>
+        <div class="nlp-card-example">Antes de cualquier pregunta, sintoniza: ¿cómo está su energía? ¿Está abierta o cerrada? ¿Habla rápido o despacio? Iguala su ritmo antes de empezar a guiar.</div>
+        <div class="nlp-card-application"><strong>Fase de uso:</strong> Diagnóstico — los primeros 5 minutos determinan si habrá confianza suficiente para el resto de la conversación.</div>
       </div>
+
       <div class="nlp-card">
         <div class="nlp-card-num">02</div>
         <div class="nlp-card-name">Anclaje de Estados</div>
-        <div class="nlp-card-desc">Evocar un estado emocional en el momento preciso del cierre. Ancla verbal que conecta el logro deseado con la decisión de compra.</div>
-        <div class="nlp-card-example">En la Fase 4 (Visión): "Imagínate cómo te sentirás cuando ya estés ahí." Luego cierra desde ese estado.</div>
+        <div class="nlp-card-desc">Un ancla es una asociación neurológica entre un estímulo y un estado emocional. En ventas, el anclaje se usa para evocar estados específicos en momentos precisos: <strong>anclar el dolor en la amplificación, anclar el deseo en la visión, anclar la certeza justo antes del cierre</strong>.</div>
+        <div class="nlp-card-example">"Imagínate cómo te sentirías cuando ya cierres tu primera venta de cinco cifras. Tómate un segundo y siente eso." — Esa instrucción crea un ancla kinestésica que conecta ese estado con la decisión de compra.</div>
+        <div class="nlp-card-application"><strong>Fase de uso:</strong> Visión (ancla de deseo) y Compromiso (ancla de certeza).</div>
       </div>
+
       <div class="nlp-card">
         <div class="nlp-card-num">03</div>
         <div class="nlp-card-name">Lenguaje Presupositivo</div>
-        <div class="nlp-card-desc">Preguntas que asumen que la venta ya ocurrió, reduciendo resistencia y moviendo la conversación hacia los detalles logísticos.</div>
-        <div class="nlp-card-example">"¿Preferirías pagar en 1 o en 3 cuotas?" / "Cuando empieces con el programa, ¿qué resultado quieres ver primero?"</div>
+        <div class="nlp-card-desc">Las presuposiciones son afirmaciones que asumen como dada una realidad que aún no ocurrió, pero que implican que sí va a ocurrir. Reducen la resistencia porque <strong>la mente del prospecto no tiene que decidir si va a comprar — tiene que decidir los detalles de cómo</strong>.</div>
+        <div class="nlp-card-example">"Cuando empieces el programa, ¿cuál es el primer resultado que querrías ver?" — Esta pregunta presupone que empezará. La mente no evalúa si empezar o no; evalúa cuál resultado primero.</div>
+        <div class="nlp-card-application"><strong>Fase de uso:</strong> Visión y Compromiso — para hacer que la decisión se sienta ya tomada.</div>
       </div>
+
       <div class="nlp-card">
         <div class="nlp-card-num">04</div>
         <div class="nlp-card-name">Reencuadre (Reframe)</div>
-        <div class="nlp-card-desc">Cambiar el marco mental con que el prospecto percibe el precio o el riesgo. El precio no es un costo —es una inversión con retorno específico.</div>
-        <div class="nlp-card-example">"¿Caro comparado a qué, exactamente?" / "El costo real es seguir 6 meses más en la misma situación."</div>
+        <div class="nlp-card-desc">El reencuadre cambia el marco de referencia desde el cual el prospecto interpreta una situación. No cambia los hechos — cambia su significado. <strong>El precio deja de ser un costo y pasa a ser una inversión con retorno específico.</strong> La presión deja de ser agresión y pasa a ser cuidado.</div>
+        <div class="nlp-card-example">"¿Caro comparado a qué, exactamente?" o "El costo lo vas a pagar de todas formas — la pregunta es si lo pagás en dinero hoy, o en tiempo, energía y resultados perdidos durante los próximos 6 meses."</div>
+        <div class="nlp-card-application"><strong>Fase de uso:</strong> Amplificación y manejo de objeciones post-presentación.</div>
       </div>
+
       <div class="nlp-card">
         <div class="nlp-card-num">05</div>
         <div class="nlp-card-name">Lenguaje Sensorial VAK</div>
-        <div class="nlp-card-desc">Identificar el canal dominante del prospecto (visual, auditivo, kinestésico) y hablarle exactamente en ese lenguaje.</div>
-        <div class="nlp-card-example">Visual: "Imagínate cómo se vería en 90 días" / Auditivo: "Escuchá bien esto" / Kinestésico: "¿Sentís que tiene sentido?"</div>
+        <div class="nlp-card-desc">Las personas procesan la información predominantemente a través de uno de tres canales: Visual (imágenes, ver), Auditivo (sonidos, hablar) o Kinestésico (sensaciones, sentir). <strong>Hablar en el canal dominante del prospecto crea una resonancia más profunda</strong> y reduce el procesamiento consciente de las palabras.</div>
+        <div class="nlp-card-example">Visual: "¿Cómo ves tu negocio en 90 días?" / Auditivo: "¿Cómo suena para vos tener eso resuelto?" / Kinestésico: "¿Sentís que tiene sentido para ti en este momento?"</div>
+        <div class="nlp-card-application"><strong>Fase de uso:</strong> Transversal — identifica el canal en el Diagnóstico y úsalo en todas las fases.</div>
       </div>
+
       <div class="nlp-card">
         <div class="nlp-card-num">06</div>
         <div class="nlp-card-name">Marco de Liderazgo</div>
-        <div class="nlp-card-desc">La cerradora que cede el control de la conversación al prospecto pierde la venta. Establece la agenda. Haz las preguntas. Cierra cada respuesta con una nueva pregunta.</div>
-        <div class="nlp-card-example">Regla: Nunca terminar tu turno sin una pregunta. El silencio pertenece al prospecto —no a ti.</div>
+        <div class="nlp-card-desc">El marco de liderazgo es la postura conversacional que establece quién conduce y hacia dónde va la conversación. Se instala y se sostiene mediante la regla de oro: <strong>nunca terminar tu turno sin una pregunta</strong>, y esperar el silencio con comodidad absoluta.</div>
+        <div class="nlp-card-example">"Entiendo que el precio te genera una duda. Antes de hablar de eso, quiero que te hagas esta pregunta: si el dinero no fuera el obstáculo, ¿habría alguna otra razón por la que no empezarías?"</div>
+        <div class="nlp-card-application"><strong>Fase de uso:</strong> Transversal — nunca se abandona. El liderazgo se mantiene de la apertura al cierre.</div>
       </div>
     </div>
   </div>
 
   <!-- MODULE 05 -->
-  <div class="module" id="m5">
+  <div class="module">
     <div class="module-header">
       <div class="module-num">05</div>
-      <div class="module-title-wrap">
+      <div>
         <span class="module-tag">El Arsenal de Preguntas</span>
-        <h2 class="module-title">60 Preguntas Socráticas Organizadas por Fase</h2>
-      </div>
-    </div>
-    <div class="module-body">
-      <p>Las siguientes preguntas están organizadas por categoría funcional. Cada una sirve un propósito específico dentro de las 5 fases del proceso. No se memorizan —se internalizan hasta que surgen naturalmente en el momento preciso.</p>
-    </div>
-
-    <div class="q-category">
-      <div class="q-cat-title"><span>01</span> Preguntas de Situación — Fase Diagnóstico</div>
-      <div class="q-grid">
-        <div class="q-card"><p>¿Cuánto tiempo llevas intentando resolver esto?</p><p class="q-type">Diagnóstico · SPIN</p></div>
-        <div class="q-card"><p>¿Qué estrategias has intentado hasta ahora?</p><p class="q-type">Diagnóstico · SPIN</p></div>
-        <div class="q-card"><p>¿Qué tan satisfecha estás con los resultados actuales, del 1 al 10?</p><p class="q-type">Diagnóstico · Calificación</p></div>
-        <div class="q-card"><p>¿Cuál es el mayor obstáculo que enfrentas hoy en tu proceso de ventas?</p><p class="q-type">Diagnóstico · Apertura</p></div>
+        <h2 class="module-title">Preguntas Socráticas por Fase y por Situación</h2>
       </div>
     </div>
 
+    <div class="prose">
+      <p>Las siguientes preguntas están organizadas por su función en las 5 fases del proceso. No se aprenden de memoria como un script — se internalizan como herramientas que el cerebro aprende a elegir instintivamente según la situación. La internalización ocurre con la práctica oral: léelas en voz alta, úsalas en role-plays, ajusta el lenguaje a tu voz natural hasta que fluyan sin esfuerzo.</p>
+    </div>
+
     <div class="q-category">
-      <div class="q-cat-title"><span>02</span> Preguntas de Problema — Fase Exploración</div>
+      <div class="q-cat-title"><span>01</span> Diagnóstico — Mapear la Situación</div>
+      <p class="q-cat-intro">Preguntas amplias y abiertas que invitan a hablar sin amenazar. El objetivo es información, no dirección todavía. <strong>Escuchas más de lo que hablas.</strong></p>
       <div class="q-grid">
-        <div class="q-card"><p>¿Y eso cómo te afecta en el día a día?</p><p class="q-type">Exploración · Amplificación</p></div>
-        <div class="q-card"><p>¿Qué consecuencias está teniendo esto para tu negocio o para ti personalmente?</p><p class="q-type">Exploración · Dolor</p></div>
-        <div class="q-card"><p>¿Hay algo más detrás de ese problema que todavía no me hayas contado?</p><p class="q-type">Exploración · Profundización</p></div>
-        <div class="q-card"><p>¿Cómo te sientes cuando eso pasa?</p><p class="q-type">Exploración · Emocional</p></div>
+        <div class="q-card"><p>¿Cuánto tiempo llevas intentando resolver esto?</p><p class="q-when"><strong>Cuándo usar:</strong> Para establecer el contexto temporal y la profundidad del problema.</p></div>
+        <div class="q-card"><p>¿Qué estrategias has intentado hasta ahora?</p><p class="q-when"><strong>Cuándo usar:</strong> Para entender qué no funcionó y evitar proponer lo mismo.</p></div>
+        <div class="q-card"><p>¿Qué tan satisfecha estás con tus resultados actuales en esta área, del 1 al 10?</p><p class="q-when"><strong>Cuándo usar:</strong> Para cuantificar la brecha. Una respuesta de 4 tiene mucho más potencial que una de 8.</p></div>
+        <div class="q-card"><p>¿Cuál dirías que es el mayor obstáculo que te frena hoy?</p><p class="q-when"><strong>Cuándo usar:</strong> Para ir directo al dolor principal sin rodeos.</p></div>
+        <div class="q-card"><p>Si pudieras cambiar una sola cosa en tu situación actual, ¿qué sería?</p><p class="q-when"><strong>Cuándo usar:</strong> Para identificar la prioridad real, no la que el prospecto cree que debería decir.</p></div>
+        <div class="q-card"><p>¿Qué es lo que mejor está funcionando ahora mismo en tu proceso?</p><p class="q-when"><strong>Cuándo usar:</strong> Para construir rapport y entender el contexto positivo antes de entrar al dolor.</p></div>
       </div>
     </div>
 
     <div class="q-category">
-      <div class="q-cat-title"><span>03</span> Preguntas de Urgencia — Fase Amplificación</div>
+      <div class="q-cat-title"><span>02</span> Exploración — Llegar al Dolor Real</div>
+      <p class="q-cat-intro">Preguntas que van un nivel más profundo que la respuesta inicial. La mayoría de las personas da la respuesta superficial primero. <strong>La segunda capa es donde está el dolor verdadero.</strong></p>
       <div class="q-grid">
-        <div class="q-card"><p>Si esto sigue igual en 6 meses, ¿dónde estarás?</p><p class="q-type">Amplificación · Urgencia</p></div>
-        <div class="q-card"><p>¿Qué estás dejando de ganar mientras no resuelves esto?</p><p class="q-type">Amplificación · Costo de inacción</p></div>
-        <div class="q-card"><p>¿Qué pasaría si dentro de un año la situación es exactamente igual?</p><p class="q-type">Amplificación · Proyección</p></div>
-        <div class="q-card"><p>¿Qué tan urgente es para ti resolver esto ahora?</p><p class="q-type">Amplificación · Prioridad</p></div>
+        <div class="q-card"><p>¿Y eso cómo te afecta específicamente en el día a día?</p><p class="q-when"><strong>Cuándo usar:</strong> Después de cualquier declaración de problema. Siempre hay un nivel más profundo.</p></div>
+        <div class="q-card"><p>¿Qué consecuencia concreta está teniendo eso para tu negocio — o para ti personalmente?</p><p class="q-when"><strong>Cuándo usar:</strong> Para separar el problema del impacto. El impacto es lo que duele.</p></div>
+        <div class="q-card"><p>¿Cómo te sentís cuando eso pasa?</p><p class="q-when"><strong>Cuándo usar:</strong> Para conectar con la dimensión emocional, que es donde se toman las decisiones.</p></div>
+        <div class="q-card"><p>¿Hay algo más detrás de eso que todavía no me hayas contado?</p><p class="q-when"><strong>Cuándo usar:</strong> Cuando sientes que la respuesta fue completa pero superficial. Invita a ir más adentro.</p></div>
       </div>
     </div>
 
     <div class="q-category">
-      <div class="q-cat-title"><span>04</span> Preguntas de Visión — Fase Visión</div>
+      <div class="q-cat-title"><span>03</span> Amplificación — El Costo de No Actuar</div>
+      <p class="q-cat-intro">Preguntas que hacen visible el costo real del statu quo. No se trata de asustar — se trata de <strong>hacer que la persona calcule, en sus propias palabras, lo que le está costando no resolver esto</strong>.</p>
       <div class="q-grid">
-        <div class="q-card"><p>¿Cómo sería para ti si eso ya estuviera resuelto?</p><p class="q-type">Visión · Anclaje Futuro</p></div>
-        <div class="q-card"><p>¿Qué cambiaría en tu negocio si pudieras cerrar consistentemente?</p><p class="q-type">Visión · Resultado Específico</p></div>
-        <div class="q-card"><p>¿Cuál sería el primer resultado que querrías ver?</p><p class="q-type">Visión · Micro-Compromiso</p></div>
-        <div class="q-card"><p>Imagínate en 90 días con esto resuelto — ¿qué ves?</p><p class="q-type">Visión · VAK Visual</p></div>
+        <div class="q-card"><p>Si esto sigue igual en 6 meses, ¿dónde estarás respecto a donde querés estar?</p><p class="q-when"><strong>Cuándo usar:</strong> La pregunta de amplificación más universal. Funciona en casi todo contexto.</p></div>
+        <div class="q-card"><p>¿Qué estás dejando de ganar cada mes que esto no está resuelto?</p><p class="q-when"><strong>Cuándo usar:</strong> Cuando el prospecto tiene un negocio o genera ingresos. Crea urgencia financiera real.</p></div>
+        <div class="q-card"><p>¿Cuánto tiempo llevas con esto sin avanzar — y qué te ha costado ese tiempo?</p><p class="q-when"><strong>Cuándo usar:</strong> Cuando hay larga historia de inacción. El tiempo acumulado amplifica el costo.</p></div>
+        <div class="q-card"><p>¿Qué te diría tu versión de dentro de un año si hoy no tomás la decisión de resolverlo?</p><p class="q-when"><strong>Cuándo usar:</strong> Para activar la perspectiva futura. El "yo del futuro" que mira hacia atrás es muy poderoso.</p></div>
       </div>
     </div>
 
     <div class="q-category">
-      <div class="q-cat-title"><span>05</span> Preguntas de Compromiso — Fase Cierre</div>
+      <div class="q-cat-title"><span>04</span> Visión — Anclar el Resultado</div>
+      <p class="q-cat-intro">Preguntas que invitan a describir el resultado deseado con concreción y emoción. <strong>Cuando el prospecto describe el "después" con sus propias palabras, ese resultado ya le pertenece.</strong></p>
       <div class="q-grid">
-        <div class="q-card"><p>¿Habría alguna razón por la que no empezarías hoy?</p><p class="q-type">Cierre · Transición</p></div>
-        <div class="q-card"><p>¿Qué necesitarías saber para que la decisión fuera clara?</p><p class="q-type">Cierre · Objeción Preventiva</p></div>
-        <div class="q-card"><p>Siento que eres exactamente el perfil para esto — ¿lo ves así tú también?</p><p class="q-type">Cierre · Validación</p></div>
-        <div class="q-card"><p>¿Estás lista para empezar o hay algo que quieras revisar primero?</p><p class="q-type">Cierre · Decisión Binaria</p></div>
+        <div class="q-card"><p>¿Cómo sería para vos si esto ya estuviera completamente resuelto?</p><p class="q-when"><strong>Cuándo usar:</strong> La pregunta de visión más fundamental. Abre el espacio del resultado.</p></div>
+        <div class="q-card"><p>¿Qué cambiaría en tu negocio si pudieras cerrar de manera consistente?</p><p class="q-when"><strong>Cuándo usar:</strong> Específica para ventas/negocios. Conecta el resultado con el negocio real del prospecto.</p></div>
+        <div class="q-card"><p>¿Cuál sería el primer resultado que querrías ver — si pudieras empezar mañana mismo?</p><p class="q-when"><strong>Cuándo usar:</strong> Lenguaje presupositivo que asume el inicio. Además, el "primer resultado" da concreción al abstracto.</p></div>
+        <div class="q-card"><p>Imaginate en 90 días con esto resuelto — ¿qué ves diferente en tu vida?</p><p class="q-when"><strong>Cuándo usar:</strong> Para prospectos visuales. El marco de 90 días es suficientemente cercano para ser creíble y suficientemente lejos para ser significativo.</p></div>
       </div>
     </div>
 
     <div class="q-category">
-      <div class="q-cat-title"><span>06</span> Power Questions — Transversales</div>
+      <div class="q-cat-title"><span>05</span> Compromiso — Transición al Cierre</div>
+      <p class="q-cat-intro">Preguntas que hacen visible si quedan objeciones reales, o confirman que el camino al sí está despejado. <strong>El cierre no se anuncia — ocurre como la continuación natural de la conversación.</strong></p>
       <div class="q-grid">
-        <div class="q-card"><p>¿Y qué significa eso para ti?</p><p class="q-type">Transversal · Profundización</p></div>
-        <div class="q-card"><p>¿Si no fuera por eso, lo harías?</p><p class="q-type">Transversal · Objeción</p></div>
-        <div class="q-card"><p>¿Caro comparado a qué, exactamente?</p><p class="q-type">Transversal · Reencuadre</p></div>
-        <div class="q-card"><p>¿Qué te diría tu versión de dentro de un año sobre esta decisión?</p><p class="q-type">Transversal · Proyección Identidad</p></div>
+        <div class="q-card"><p>Con todo lo que me contaste hoy, ¿habría alguna razón por la que no empezarías?</p><p class="q-when"><strong>Cuándo usar:</strong> La pregunta de cierre de transición más natural después de las 5 fases. Abre espacio a la objeción o confirma el sí.</p></div>
+        <div class="q-card"><p>¿Qué necesitarías saber para que la decisión fuera clara ahora mismo?</p><p class="q-when"><strong>Cuándo usar:</strong> Cuando sientes que hay algo sin resolver pero el prospecto no lo está diciendo. Lo invita a nombrarlo.</p></div>
+        <div class="q-card"><p>¿Preferirías empezar esta semana o la próxima?</p><p class="q-when"><strong>Cuándo usar:</strong> Lenguaje presupositivo clásico. Solo funciona cuando la resistencia ya fue resuelta. No es para presionar — es para formalizar.</p></div>
+        <div class="q-card"><p>Siento que sos exactamente el perfil para esto — ¿lo ves así vos también?</p><p class="q-when"><strong>Cuándo usar:</strong> Para crear validación mutua antes del cierre. El "¿lo ves así?" la invita a confirmar en sus propias palabras.</p></div>
       </div>
     </div>
   </div>
 
   <!-- MODULE 06 -->
-  <div class="module" id="m6">
+  <div class="module">
     <div class="module-header">
       <div class="module-num">06</div>
-      <div class="module-title-wrap">
-        <span class="module-tag">El Cierre Socrático</span>
-        <h2 class="module-title">De la Pregunta al Cierre — Sin Ruptura</h2>
+      <div>
+        <span class="module-tag">Síntesis Operativa</span>
+        <h2 class="module-title">Del Método al Cierre — La Transición Que No Interrumpe el Flujo</h2>
       </div>
     </div>
-    <div class="module-body">
-      <p>El cierre Socrático no se "activa" de repente. Es la consecuencia natural de una conversación donde el prospecto ha hablado más que tú, ha articulado su dolor, ha visualizado el resultado y ha confirmado que quiere cambiar. <strong>En ese punto, pedir el avance no es presión —es la respuesta lógica a lo que ella misma describió</strong>.</p>
+    <div class="prose">
+      <p>Una de las confusiones más comunes al aprender el método Socrático es pensar que hay un momento en que "termina el método" y "comienza el cierre". No es así. En una conversación Socrática bien ejecutada, <strong>el cierre es simplemente la última pregunta de la conversación</strong> — la que formaliza una decisión que ya fue construida pregunta a pregunta durante todas las fases anteriores.</p>
 
-      <p>La transición al cierre ocurre con una pregunta de compromiso calibrada: no "¿lo compras?" sino "¿habría alguna razón por la que no empezarías?" Si hay objeción, es información. Si no hay, el sí ya es implícito y solo falta formalizarlo.</p>
+      <p>Cuando el prospecto llegó a la fase 5 habiendo articulado su dolor, calculado el costo de no actuar y descrito con sus propias palabras el resultado que quiere — el sí ya no es una decisión que tiene que tomar. Es una continuación lógica de todo lo que acaba de decir. La cerradora que entiende esto no siente la tensión del momento del cierre como algo diferente al resto de la conversación. El cierre simplemente ocurre.</p>
 
       <div class="callout">
-        <p class="callout-label">El Principio del Cierre de Transición</p>
-        <p>"No cierres abruptamente. Cierra como continuación. La frase de cierre es solo la última pregunta de la conversación Socrática —la que invita a la decisión que ya estaba tomada."</p>
+        <p class="callout-label">El Cierre Socrático en Práctica</p>
+        <p>Después de que el prospecto describe la visión del resultado (Fase 4), la transición natural al cierre suena así: <em>"Basándome en todo lo que me contaste — el tiempo que llevas sin resolver esto, lo que te está costando cada mes, y el resultado que me describiste recién — ¿habría alguna razón por la que no empezarías a trabajar en esto ahora?"</em> Esa pregunta sintetiza las 4 fases anteriores en una sola frase. No presiona. No convence. Solo pregunta si hay algún obstáculo real. Si no hay, el sí es el siguiente paso lógico.</p>
       </div>
 
-      <p>Cuando surge una objeción, no la "chocas" —la recibes como lo que es: una pregunta no formulada. Empatizas. Rediriges. Y vuelves a pedir con una frase de cierre que lleva la conversación hacia adelante, no hacia atrás.</p>
+      <p>Cuando aparece una objeción en la fase de cierre, es información — no un rechazo. La objeción específica que aparece en este punto te dice exactamente qué faltó en las fases anteriores: si hay duda sobre el resultado, la Fase 2 (exploración) necesitaba más profundidad. Si hay resistencia al precio, la Fase 3 (amplificación) no fue suficientemente potente. Si hay inseguridad de que funcionará para ella, la Fase 4 (visión) quedó demasiado abstracta. En cada caso, la objeción te guía de regreso al punto exacto que necesita más trabajo.</p>
 
-      <p><strong>Frases de cierre de transición que fluyen naturalmente desde una conversación Socrática:</strong></p>
-      <ul style="padding-left:24px; margin-top:14px; color:var(--gold-pale); font-family:'Playfair Display',serif; font-style:italic; line-height:2.2; font-size:.93rem;">
-        <li>"¿Qué necesitarías para que esto tuviera sentido hoy?"</li>
-        <li>"¿Preferirías que empecemos esta semana o la próxima?"</li>
-        <li>"Basado en todo lo que me contaste, parece que esto es exactamente lo que buscas — ¿lo ves así?"</li>
-        <li>"¿Cuál método de pago te es más cómodo?"</li>
-      </ul>
+      <p><strong>La regla de oro del cierre Socrático:</strong> nunca abandones después de la primera objeción. Empatiza, redirige con una pregunta, y vuelve a avanzar. Una cerradora que entiende que el primer NO es el inicio de la negociación — no el final — tiene todo el material de este método para convertir cada objeción en el siguiente paso hacia el sí.</p>
     </div>
   </div>
 
-</div><!-- /content-wrap -->
+</div>
 
-<!-- QUOTE STRIP -->
-<section class="quote-strip">
-  <p class="quote-text">"No le des a la gente argumentos para convencerlos. Hazles preguntas que los lleven a convencerse a sí mismos. Esa es la diferencia entre una vendedora y una cerradora."</p>
-  <p class="quote-attr">— Método Victoria Fischer</p>
+<section class="grand-quote">
+  <p class="grand-quote-text">"No le des a tu prospecto argumentos para convencerla. Hazle preguntas que la lleven a convencerse a sí misma. Esa es la diferencia entre una vendedora que presenta y una cerradora que guía."</p>
+  <p class="grand-quote-attr">— Método Victoria Fischer</p>
 </section>
 
-<!-- CLOSING -->
-<section class="closing-section">
-  <h2>La teoría se vuelve poder<br>en la <span>práctica deliberada</span>.</h2>
-  <p>
-    Revisita este material antes de cada conversación importante. Con el tiempo, las 5 fases se vuelven instinto y las preguntas fluyen desde el servicio genuino —no desde un guion.
-  </p>
-  <a href="https://victoriafischer.com" class="cta-btn">Explorar el Método Completo</a>
-</section>
+<div class="back-section">
+  <a href="https://victoria-fischer.vercel.app" class="back-btn">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Volver a Victoria Fischer
+  </a>
+</div>
 
-<!-- FOOTER -->
 <footer>
   <span class="brand">Victoria Fischer</span>
   <span class="legal">Material exclusivo para clientes · Uso personal · No distribuir</span>
