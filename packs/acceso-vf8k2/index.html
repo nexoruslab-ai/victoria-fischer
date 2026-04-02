@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Acceso Está Activo — Victoria Fischer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --berry: #6B2D5E;
+    --berry-deep: #4A1F42;
+    --gold: #C9963A;
+    --gold-pale: #F2E0C0;
+    --dark: #1A0F18;
+    --dark2: #120B10;
+    --white: #FFFFFF;
+    --text-light: rgba(255,255,255,0.87);
+    --text-muted: rgba(255,255,255,0.5);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background: var(--dark2);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--dark2);
+    border-bottom: 1px solid rgba(201,150,58,0.2);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .site-header .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    letter-spacing: .18em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, var(--dark2) 0%, var(--berry-deep) 55%, var(--dark2) 100%);
+    padding: 80px 40px 70px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,150,58,.09) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  /* Badge */
+  .access-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(201,150,58,.1);
+    border: 1px solid rgba(201,150,58,.35);
+    padding: 8px 20px;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+  .access-badge .dot {
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4ade80;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px #4ade80; }
+    50% { opacity: .7; box-shadow: 0 0 16px #4ade80; }
+  }
+  .access-badge span {
+    font-size: .65rem;
+    letter-spacing: .26em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 span { color: var(--gold); }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 24px auto;
+  }
+
+  .hero-intro {
+    max-width: 580px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.9;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-intro strong { color: var(--gold-pale); font-weight: 500; }
+
+  /* PACKS GRID */
+  .packs-section {
+    flex: 1;
+    padding: 70px 40px 80px;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .packs-label {
+    font-size: .65rem;
+    letter-spacing: .28em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .packs-label::before,
+  .packs-label::after {
+    content: '';
+    height: 1px;
+    width: 60px;
+    background: linear-gradient(90deg, transparent, rgba(201,150,58,.3));
+  }
+  .packs-label::after { background: linear-gradient(90deg, rgba(201,150,58,.3), transparent); }
+
+  .packs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  /* PACK CARD */
+  .pack-card {
+    background: rgba(26,15,24,.7);
+    border: 1px solid rgba(201,150,58,.15);
+    padding: 36px 30px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    text-decoration: none;
+    transition: all .3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .pack-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .pack-card:hover {
+    border-color: rgba(201,150,58,.4);
+    background: rgba(107,45,94,.2);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,.3);
+  }
+  .pack-card:hover::before { opacity: 1; }
+
+  .pack-num {
+    font-size: .6rem;
+    letter-spacing: .28em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pack-num::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,150,58,.2);
+  }
+
+  .pack-icon {
+    font-size: 2rem;
+    margin-bottom: 18px;
+    line-height: 1;
+  }
+
+  .pack-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+
+  .pack-subtitle {
+    font-size: .72rem;
+    letter-spacing: .12em;
+    color: var(--gold-pale);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .pack-desc {
+    font-size: .88rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    flex: 1;
+    margin-bottom: 28px;
+  }
+
+  .pack-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+  .pack-cta-text {
+    font-size: .68rem;
+    letter-spacing: .2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .pack-cta-arrow {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(201,150,58,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s;
+  }
+  .pack-card:hover .pack-cta-arrow {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .pack-card:hover .pack-cta-arrow svg { fill: var(--dark2); }
+  .pack-cta-arrow svg {
+    width: 14px;
+    height: 14px;
+    fill: var(--gold);
+    transition: fill .3s;
+  }
+
+  /* NOTE */
+  .access-note {
+    text-align: center;
+    padding: 0 40px 60px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .access-note p {
+    font-size: .82rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .access-note p strong { color: rgba(255,255,255,.55); font-weight: 500; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark2);
+    border-top: 1px solid rgba(255,255,255,.05);
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+  }
+  footer .brand { font-family:'Playfair Display',serif; font-size:.85rem; color:var(--gold); letter-spacing:.14em; }
+  footer .legal { font-size:.65rem; color:rgba(255,255,255,.22); letter-spacing:.1em; }
+
+  @media (max-width: 600px) {
+    .site-header, .hero, .packs-section, .access-note, footer { padding-left: 24px; padding-right: 24px; }
+    .hero { padding-top: 60px; padding-bottom: 60px; }
+    .packs-section { padding-top: 50px; padding-bottom: 60px; }
+    .packs-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <span class="brand">Victoria Fischer</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="access-badge">
+    <span class="dot"></span>
+    <span>Acceso activado · Pago confirmado</span>
+  </div>
+  <h1>Tu material está<br><span>listo para ti.</span></h1>
+  <div class="hero-divider"></div>
+  <p class="hero-intro">
+    Bienvenida. A continuación encontrás los <strong>3 recursos del programa</strong> — acceso inmediato y permanente. Podés empezar por cualquiera de ellos hoy mismo.
+  </p>
+</section>
+
+<!-- PACKS -->
+<div class="packs-section">
+  <p class="packs-label">Tus 3 recursos desbloqueados</p>
+
+  <div class="packs-grid">
+
+    <!-- PACK 01 -->
+    <a class="pack-card" href="/packs/mindsets-vf9k2/">
+      <p class="pack-num">Recurso 01</p>
+      <div class="pack-icon">◈</div>
+      <h2 class="pack-title">Los 5 Mindsets de las Grandes Cerradoras</h2>
+      <p class="pack-subtitle">Identidad · Mentalidad · PNL</p>
+      <p class="pack-desc">La arquitectura mental que separa a las que cierran de las que solo venden. Marcos de certeza, resiliencia y liderazgo conversacional con protocolos de integración.</p>
+      <div class="pack-cta">
+        <span class="pack-cta-text">Acceder ahora</span>
+        <span class="pack-cta-arrow">
+          <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- PACK 02 -->
+    <a class="pack-card" href="/packs/socratico-x7m3p/">
+      <p class="pack-num">Recurso 02</p>
+      <div class="pack-icon">❧</div>
+      <h2 class="pack-title">Material Teórico del Método Socrático</h2>
+      <p class="pack-subtitle">Método · Proceso · Preguntas</p>
+      <p class="pack-desc">El marco teórico completo — filosofía, neurociencia, las 5 fases operativas, 6 herramientas de PNL integradas y el arsenal de preguntas para cada etapa del proceso.</p>
+      <div class="pack-cta">
+        <span class="pack-cta-text">Acceder ahora</span>
+        <span class="pack-cta-arrow">
+          <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- PACK 03 -->
+    <a class="pack-card" href="/packs/objeciones-4n8rw/">
+      <p class="pack-num">Recurso 03</p>
+      <div class="pack-icon">✦</div>
+      <h2 class="pack-title">Manual de Respuestas Validadas a Objeciones</h2>
+      <p class="pack-subtitle">Arsenal · Scripts · Cualquier Nicho</p>
+      <p class="pack-desc">10 objeciones con scripts completos de conversación, análisis de por qué cada respuesta funciona, y filtros por categoría para encontrar lo que necesitás en segundos.</p>
+      <div class="pack-cta">
+        <span class="pack-cta-text">Acceder ahora</span>
+        <span class="pack-cta-arrow">
+          <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- NOTE -->
+<div class="access-note">
+  <p>Este link es de <strong>acceso permanente</strong> — guardalo en favoritos para volver cuando quieras. Si compraste un pack con mentoría en vivo, Victoria se va a comunicar contigo por los canales acordados para coordinar tu primera sesión.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="brand">Victoria Fischer</span>
+  <span class="legal">Acceso exclusivo post-pago · No compartir · Uso personal</span>
+</footer>
+
+</body>
+</html>
